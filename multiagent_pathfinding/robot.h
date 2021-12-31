@@ -7,11 +7,11 @@ class robot : public QObject
 {
     Q_OBJECT
 private:
-    int id, x_pos, y_pos;
+    int id, x_pos, y_pos, x_goal, y_goal;
     int commRange;
     int detRange;
 public:
-    explicit robot(int identifier, int communicationRange, int detectionRange, QObject *parent = nullptr);
+    explicit robot(int identifier, int communicationRange, int detectionRange, int xgoal, int ygoal, QObject *parent = nullptr);
     std::vector<int> getPosition()
     {
         std::vector<int> position;

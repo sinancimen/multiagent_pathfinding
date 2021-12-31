@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QWidget>
+#include "addrobotdialog.h"
+#include "addobstacledialog.h"
 
 class QPushButton;
 class MainWindow : public QWidget
@@ -11,7 +13,10 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
 
 private:
-    QPushButton *m_button;
+    QPushButton *m_AddRobotButton;
+    QPushButton *m_AddObstacleButton;
+    addRobotDialog *m_AddRobotDialog;
+    addObstacleDialog *m_AddObstacleDialog;
 
 signals:
 
