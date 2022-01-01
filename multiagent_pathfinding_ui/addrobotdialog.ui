@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>addRobotDialog</class>
+ <widget class="QWidget" name="addRobotDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>279</width>
+    <height>383</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLineEdit" name="positionXTextbox">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>30</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="positionYTextbox">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>80</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="goalXTextbox">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>130</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="goalYTextbox">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>180</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="commRangeTextbox">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>230</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="detRangeTextbox">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>280</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="addButton">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>330</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="positionXLabel">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>30</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>X Position:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="positionYLabel">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>80</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Y Position:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="goalXLabel">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>130</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>X Goal:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="goalYLabel">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>180</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Y Goal:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="commRangeLabel">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>230</y>
+     <width>151</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Communication Range: </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="detRangeLabel">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>280</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Detection Range: </string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>addButton</sender>
+   <signal>clicked()</signal>
+   <receiver>addRobotDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>127</x>
+     <y>341</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>191</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>positionXTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>addRobotDialog</receiver>
+   <slot>setPositionX(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>176</x>
+     <y>38</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>203</x>
+     <y>12</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>positionYTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>addRobotDialog</receiver>
+   <slot>setPositionY(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>239</x>
+     <y>88</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>67</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>goalXTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>addRobotDialog</receiver>
+   <slot>setGoalX(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>148</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>114</x>
+     <y>151</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>goalYTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>addRobotDialog</receiver>
+   <slot>setGoalY(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>199</x>
+     <y>189</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>264</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>commRangeTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>addRobotDialog</receiver>
+   <slot>setCommRange(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>178</x>
+     <y>242</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>207</x>
+     <y>271</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>detRangeTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>addRobotDialog</receiver>
+   <slot>setDetRange(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>235</x>
+     <y>297</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>256</x>
+     <y>339</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>setPositionX(QString)</slot>
+  <slot>setPositionY(QString)</slot>
+  <slot>setGoalX(QString)</slot>
+  <slot>setGoalY(QString)</slot>
+  <slot>setCommRange(QString)</slot>
+  <slot>setDetRange(QString)</slot>
+ </slots>
+</ui>
