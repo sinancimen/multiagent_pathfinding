@@ -9,9 +9,9 @@ class obstacle : public QObject
     Q_OBJECT
 
 private:
-    int id, x_pos, y_pos;
+    int id, type, x_pos, y_pos, length, width, diameter;
 public:
-    explicit obstacle(int identifier, QObject *parent = nullptr);
+    explicit obstacle(int identifier, int obstype, int posx, int posy, int len, int width_, int dia, QObject *parent = nullptr);
     std::vector<int> getPosition()
     {
         std::vector<int> position;
@@ -19,10 +19,21 @@ public:
         position.push_back(y_pos);
         return position;
     }
-    void setPosition(int xpos, int ypos)
+    int getType()
     {
-        x_pos = xpos;
-        y_pos = ypos;
+        return type;
+    }
+    int getLength()
+    {
+        return length;
+    }
+    int getWidth()
+    {
+        return width;
+    }
+    int getDiameter()
+    {
+        return diameter;
     }
 
 signals:

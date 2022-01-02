@@ -9,12 +9,12 @@ namespace Ui {
 class addRobotDialog;
 }
 
-class addRobotDialog : public QWidget
+class addRobotDialog : public MainWindow
 {
     Q_OBJECT
 
 public:
-    explicit addRobotDialog(QWidget *parent = nullptr);
+    explicit addRobotDialog(MainWindow *parent = nullptr);
     ~addRobotDialog();
     QString getPositionX() { return position_x;}
     QString getPositionY() { return position_y;}
@@ -33,6 +33,7 @@ private:
     QString goal_y;
     QString commRange;
     QString detRange;
+    MainWindow* parentWidget;
 
 public slots:
     void setPositionX(QString position)
@@ -59,14 +60,16 @@ public slots:
     {
         detRange = range;
     }
-    std::vector<int> AddRobotClickedToMainWindow()
+    void AddRobotClickedToMainWindow()
     {
         std::vector<int> params;
         params.push_back(getCommRange().toInt());
         params.push_back(getDetRange().toInt());
         params.push_back(getGoalX().toInt());
         params.push_back(getGoalY().toInt());
-        return params;
+        params.push_back(getPositionX().toInt());
+        params.push_back(getPositionY().toInt());
+        parentWidget->addRobotToList(params);
     }
 };
 

@@ -9,23 +9,17 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    addobstacledialog.cpp \
-    addrobotdialog.cpp \
     main.cpp \
     mainwindow.cpp \
     obstacle.cpp \
     robot.cpp
 
 HEADERS += \
-    addobstacledialog.h \
-    addrobotdialog.h \
     mainwindow.h \
     obstacle.h \
     robot.h
 
 FORMS += \
-    addobstacledialog.ui \
-    addrobotdialog.ui \
     mainwindow.ui
 
 # Default rules for deployment.

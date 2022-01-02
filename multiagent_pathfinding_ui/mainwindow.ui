@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>615</width>
-    <height>596</height>
+    <width>549</width>
+    <height>1012</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="addRobotButton">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>440</y>
+      <x>90</x>
+      <y>940</y>
       <width>101</width>
       <height>24</height>
      </rect>
@@ -30,8 +30,8 @@
    <widget class="QPushButton" name="addObstacleButton">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>440</y>
+      <x>380</x>
+      <y>940</y>
       <width>101</width>
       <height>24</height>
      </rect>
@@ -43,8 +43,8 @@
    <widget class="QComboBox" name="configSelectionComboBox">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>440</y>
+      <x>380</x>
+      <y>530</y>
       <width>141</width>
       <height>22</height>
      </rect>
@@ -73,8 +73,8 @@
    <widget class="QPushButton" name="solveButton">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>480</y>
+      <x>20</x>
+      <y>570</y>
       <width>91</width>
       <height>21</height>
      </rect>
@@ -86,8 +86,8 @@
    <widget class="QComboBox" name="methodSelectionComboBox">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>480</y>
+      <x>380</x>
+      <y>570</y>
       <width>141</width>
       <height>22</height>
      </rect>
@@ -106,8 +106,8 @@
    <widget class="QPushButton" name="startButton">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>520</y>
+      <x>130</x>
+      <y>570</y>
       <width>91</width>
       <height>21</height>
      </rect>
@@ -119,8 +119,8 @@
    <widget class="QPushButton" name="pauseButton">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>520</y>
+      <x>280</x>
+      <y>570</y>
       <width>75</width>
       <height>24</height>
      </rect>
@@ -129,13 +129,349 @@
      <string>Pause</string>
     </property>
    </widget>
-   <widget class="QWidget" name="robotPlaygroundWidget" native="true">
+   <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>380</x>
+      <y>610</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Rectangular</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Circular</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>640</y>
+      <width>271</width>
+      <height>291</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page">
+     <widget class="QLabel" name="widthLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>160</y>
+        <width>49</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Length:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="widthTextbox">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>210</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lengthTextbox">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>160</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="positionYTextbox">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>110</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="positionXTextbox">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>60</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="positionYLabel">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>110</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Y Position:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="widthLabel">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>210</y>
+        <width>49</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Width:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="positionXLabel">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>X Position:</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_2">
+     <widget class="QLabel" name="positionXLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>X Position:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="positionXTextbox_2">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>50</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="diameterTextbox">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>150</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="positionYLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>100</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Y Position:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="diameterLabel">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>150</y>
+        <width>61</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Diameter:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="positionYTextbox_2">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>100</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QLineEdit" name="commRangeTextbox">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>830</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="detRangeTextbox">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>880</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="commRangeLabel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>830</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Communication Range: </string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="positionXTextbox_3">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>630</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="goalXTextbox">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>730</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="positionXLabel_3">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>630</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>X Position:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="positionYLabel_3">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>680</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Y Position:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="positionYTextbox_3">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>680</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="goalYTextbox">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>780</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="detRangeLabel">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>880</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Detection Range: </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="goalYLabel">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>780</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Y Goal:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="goalXLabel">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>730</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>X Goal:</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
       <y>10</y>
-      <width>591</width>
-      <height>411</height>
+      <width>500</width>
+      <height>500</height>
      </rect>
     </property>
     <property name="palette">
@@ -234,9 +570,9 @@
        <colorrole role="Window">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
-          <green>85</green>
-          <blue>127</blue>
+          <red>240</red>
+          <green>240</green>
+          <blue>240</blue>
          </color>
         </brush>
        </colorrole>
@@ -288,9 +624,9 @@
        <colorrole role="AlternateBase">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
-          <green>85</green>
-          <blue>255</blue>
+          <red>245</red>
+          <green>245</green>
+          <blue>245</blue>
          </color>
         </brush>
        </colorrole>
@@ -616,9 +952,9 @@
        <colorrole role="Window">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
-          <green>85</green>
-          <blue>127</blue>
+          <red>240</red>
+          <green>240</green>
+          <blue>240</blue>
          </color>
         </brush>
        </colorrole>
@@ -722,7 +1058,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>615</width>
+     <width>549</width>
      <height>22</height>
     </rect>
    </property>
@@ -732,18 +1068,114 @@
  <resources/>
  <connections>
   <connection>
+   <sender>positionXTextbox_3</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setPositionX(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>201</x>
+     <y>591</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>291</x>
+     <y>561</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>positionYTextbox_3</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setPositionY(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>226</x>
+     <y>641</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>619</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>goalXTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setGoalX(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>255</x>
+     <y>694</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>287</x>
+     <y>673</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>goalYTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setGoalY(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>186</x>
+     <y>745</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>129</x>
+     <y>725</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>commRangeTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setCommRange(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>216</x>
+     <y>793</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>106</x>
+     <y>774</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>detRangeTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setDetRange(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>238</x>
+     <y>835</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>826</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>addRobotButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>AddRobotClicked()</slot>
+   <slot>addRobotToList()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>130</x>
-     <y>473</y>
+     <x>178</x>
+     <y>903</y>
     </hint>
     <hint type="destinationlabel">
-     <x>307</x>
-     <y>297</y>
+     <x>295</x>
+     <y>918</y>
     </hint>
    </hints>
   </connection>
@@ -751,21 +1183,177 @@
    <sender>addObstacleButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>AddObstacleClicked()</slot>
+   <slot>addToObstacleList()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>307</x>
-     <y>475</y>
+     <x>448</x>
+     <y>905</y>
     </hint>
     <hint type="destinationlabel">
-     <x>369</x>
-     <y>490</y>
+     <x>571</x>
+     <y>901</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>stackedWidget</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>473</x>
+     <y>580</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>473</x>
+     <y>620</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setObstacleIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>410</x>
+     <y>576</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>528</x>
+     <y>545</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>positionXTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setPositionX_obs(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>528</x>
+     <y>666</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>588</x>
+     <y>635</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>positionYTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setPositionY_obs(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>490</x>
+     <y>716</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>587</x>
+     <y>699</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lengthTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setLength_obs(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>439</x>
+     <y>766</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>590</x>
+     <y>755</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widthTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setWidth_obs(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>458</x>
+     <y>818</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>592</x>
+     <y>799</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>positionXTextbox_2</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setPositionX_obs(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>500</x>
+     <y>647</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>579</x>
+     <y>624</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>positionYTextbox_2</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setPositionY_obs(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>479</x>
+     <y>697</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>595</x>
+     <y>683</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>diameterTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setDiameter_obs(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>458</x>
+     <y>754</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>597</x>
+     <y>738</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
-  <slot>AddRobotClicked()</slot>
-  <slot>AddObstacleClicked()</slot>
+  <slot>setPositionX(QString)</slot>
+  <slot>setPositionY(QString)</slot>
+  <slot>setGoalX(QString)</slot>
+  <slot>setGoalY(QString)</slot>
+  <slot>setCommRange(QString)</slot>
+  <slot>setDetRange(QString)</slot>
+  <slot>addRobotToList()</slot>
+  <slot>addToObstacleList()</slot>
+  <slot>setPositionX_obs(QString)</slot>
+  <slot>setPositionY_obs(QString)</slot>
+  <slot>setObstacleIndex(int)</slot>
+  <slot>setWidth_obs(QString)</slot>
+  <slot>setLength_obs(QString)</slot>
+  <slot>setDiameter_obs(QString)</slot>
  </slots>
 </ui>

@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QList>
+#include <QGraphicsEllipseItem>
 
 class robot : public QObject
 {
@@ -11,8 +12,19 @@ private:
     int id, x_pos, y_pos, x_goal, y_goal;
     int commRange;
     int detRange;
+    QGraphicsEllipseItem* graphicObject;
+
+
 public:
     explicit robot(int identifier, int communicationRange, int detectionRange, int xgoal, int ygoal, QObject *parent = nullptr);
+    void setGraphicObject(QGraphicsEllipseItem* item)
+    {
+        graphicObject = item;
+    }
+    QGraphicsEllipseItem* getGraphicObject()
+    {
+        return graphicObject;
+    }
     std::vector<int> getPosition()
     {
         std::vector<int> position;
