@@ -57,3 +57,6 @@ compile_commands.json
 *.db-shm
 *.db-wal
 *.opendb
+multiagent_pathfinding_ui/debug/
+multiagent_pathfinding_ui/release/
+
