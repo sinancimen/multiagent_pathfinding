@@ -124,13 +124,13 @@ void MainWindow::drawObstacle(obstacle* Obstacle)
     std::vector<int> position = Obstacle->getPosition();
     if (Obstacle->getType())
     {
-        QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(position.at(0) * 20 + 10, position.at(1)* 20, Obstacle->getDiameter(), Obstacle->getDiameter());
+        QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(position.at(0) * 20 + 10, position.at(1)* 20, Obstacle->getDiameter() * 20, Obstacle->getDiameter() * 20);
         circle->setBrush(QBrush(Qt::black));
         scene->addItem(circle);
     }
     else
     {
-        QGraphicsRectItem* rectangle = new QGraphicsRectItem(position.at(0) * 20 + 10, position.at(1) * 20, Obstacle->getWidth(), Obstacle->getLength());
+        QGraphicsRectItem* rectangle = new QGraphicsRectItem(position.at(0) * 20 + 10, position.at(1) * 20, Obstacle->getWidth() * 20, Obstacle->getLength() * 20);
         rectangle->setBrush(QBrush(Qt::black));
         scene->addItem(rectangle);
     }
