@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QList>
 #include <QGraphicsEllipseItem>
+#include "tile.h"
 
 class robot : public QObject
 {
@@ -13,10 +14,16 @@ private:
     int commRange;
     int detRange;
     QGraphicsEllipseItem* graphicObject;
+    tile* Tile;
+    std::vector<tile*> pathSequence;
 
 
 public:
     explicit robot(int identifier, int communicationRange, int detectionRange, int xgoal, int ygoal, QObject *parent = nullptr);
+
+    tile* getTile() { return Tile; }
+    void setTile(tile* tile) { Tile = tile; }
+
     void setGraphicObject(QGraphicsEllipseItem* item)
     {
         graphicObject = item;
@@ -49,6 +56,26 @@ public:
     {
         return detRange;
     }
+
+    std::vector<int> getGoal()
+    {
+        std::vector<int> goal;
+        goal.push_back(x_goal);
+        goal.push_back(y_goal);
+        return goal;
+    }
+
+    void setPath(std::vector<tile*> path) { pathSequence = path; }
+    tile* getNextStep() { return pathSequence.at(0); }
+    void takeStep()
+    {
+        Tile = pathSequence.at(0);
+        x_pos = Tile->x_pos;
+        y_pos = Tile->y_pos;
+        pathSequence.erase(pathSequence.begin());
+    }
+
+    
 
 signals:
 

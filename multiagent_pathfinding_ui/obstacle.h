@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "obstacle.h"
+#include "map.h"
 
 class obstacle : public QObject
 {

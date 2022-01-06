@@ -1,0 +1,28 @@
+﻿  Reading Qt configuration (C:/Qt/5.12.12/msvc2017_64/bin/qmake)
+  Moc'ing mainwindow.h...
+  Moc'ing obstacle.h...
+  Moc'ing robot.h...
+   Warning: Failed to resolve include "C:/Users/cimbo/OneDrive/Masa?st?/repos/multiagent_pathfinding/multiagent_pathfinding_ui/Release/moc_predefs.h" for moc file C:\Users\cimbo\OneDrive\Masa³st³\repos\multiagent_pathfinding\multiagent_pathfinding_ui\robot.h
+   Warning: Failed to resolve include "C:/Users/cimbo/OneDrive/Masa?st?/repos/multiagent_pathfinding/multiagent_pathfinding_ui/Release/moc_predefs.h" for moc file C:\Users\cimbo\OneDrive\Masa³st³\repos\multiagent_pathfinding\multiagent_pathfinding_ui\obstacle.h
+   Warning: Failed to resolve include "C:/Users/cimbo/OneDrive/Masa?st?/repos/multiagent_pathfinding/multiagent_pathfinding_ui/Release/moc_predefs.h" for moc file C:\Users\cimbo\OneDrive\Masa³st³\repos\multiagent_pathfinding\multiagent_pathfinding_ui\mainwindow.h
+  main.cpp
+  mainwindow.cpp
+  map.cpp
+  Node.cpp
+  obstacle.cpp
+  robot.cpp
+  tile.cpp
+C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\ngraph.hpp(298,1): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file map.cpp)
+C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\ngraph.hpp(283): message : while compiling class template member function 'void NGraph::tGraph<tile *>::insert_edge(std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>,std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>)' (compiling source file map.cpp)
+C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\ngraph.hpp(334): message : see reference to function template instantiation 'void NGraph::tGraph<tile *>::insert_edge(std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>,std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>)' being compiled (compiling source file map.cpp)
+C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\map.h(11): message : see reference to class template instantiation 'NGraph::tGraph<tile *>' being compiled (compiling source file map.cpp)
+C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\ngraph.hpp(303,1): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file map.cpp)
+C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\mainwindow.cpp(154,15): warning C4189: 'node_temp': local variable is initialized but not referenced
+C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\ngraph.hpp(372,1): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data (compiling source file mainwindow.cpp)
+C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\ngraph.hpp(356): message : while compiling class template member function 'bool NGraph::tGraph<tile *>::remove_edge(std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>,std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>)' (compiling source file mainwindow.cpp)
+C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\ngraph.hpp(390): message : see reference to function template instantiation 'bool NGraph::tGraph<tile *>::remove_edge(std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>,std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>)' being compiled (compiling source file mainwindow.cpp)
+C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\map.h(11): message : see reference to class template instantiation 'NGraph::tGraph<tile *>' being compiled (compiling source file mainwindow.cpp)
+  moc_mainwindow.cpp
+  moc_obstacle.cpp
+  moc_robot.cpp
+  multiagent_pathfinding_ui.vcxproj -> C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\release\multiagent_pathfinding_ui.exe

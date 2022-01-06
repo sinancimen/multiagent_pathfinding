@@ -10,6 +10,8 @@
 #include <QGraphicsView>
 #include <QGraphicsRectItem>
 #include <QBrush>
+#include "map.h"
+#include "node.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -35,6 +37,9 @@ public:
     QString getWidth_obs() { return width_obs;}
     QString getDiameter_obs() {return diameter_obs;}
     int getObstacleType() {return obstacleIndex;}
+    map* Map;
+    void localRepairAStar_Solver();
+    void localRepairAStar_Search(robot* Robot);
 
 
 

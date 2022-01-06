@@ -12,12 +12,23 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     obstacle.cpp \
-    robot.cpp
+    robot.cpp \
+    map.cpp \
+    Node.cpp \
+    tile.cpp \
+
 
 HEADERS += \
     mainwindow.h \
     obstacle.h \
-    robot.h
+    robot.h \
+    helpers.h \
+    map.h \
+    Node.h \
+    tile.h \
+    set_ops.hpp \
+    ngraph.hpp \
+
 
 FORMS += \
     mainwindow.ui
