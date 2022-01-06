@@ -53,3 +53,7 @@ compile_commands.json
 *.tlog
 *.ipch
 *.idx
+*.db
+*.db-shm
+*.db-wal
+*.opendb
