@@ -25,10 +25,12 @@ MainWindow::MainWindow(QWidget *parent)
     brushes.push_back(QBrush(Qt::darkYellow));
 
     Map = new map(480, 480);
+    timerId = startTimer(200);
 }
 
 MainWindow::~MainWindow()
 {
+    killTimer(timerId);
     delete ui;
 }
 
@@ -66,7 +68,7 @@ void MainWindow::addRobotToList()
     std::vector<tile*> tileList = Map->getTileList();
     for (unsigned int i = 0; i < tileList.size(); i++)
     {
-        if ((tileList.at(i)->x_pos = Robot->getPosition().at(0)) && (tileList.at(i)->y_pos = Robot->getPosition().at(1)))
+        if ((tileList.at(i)->x_pos == Robot->getPosition().at(0)) && (tileList.at(i)->y_pos == Robot->getPosition().at(1)))
         {
             Robot->setTile(tileList.at(i));
             break;
@@ -116,26 +118,21 @@ void MainWindow::updateRobotGraphics()
 }
 
 
-void MainWindow::localRepairAStar_Solver()
+void MainWindow::localRepairAStar_Solver(robot* robot_considered)
 {
-    for (int i = 0; i < robotList.size(); i++)
+    map* MapClone(Map);
+    std::set<tile*> neighbour_tiles = MapClone->getGraph().out_neighbors(robot_considered->getTile());
+    for (tile* Tile : neighbour_tiles)
     {
-        map* MapClone(Map);
-        robot* robot_considered = robotList.at(i);
-        std::set<tile*> neighbour_tiles = MapClone->getGraph().out_neighbors(robot_considered->getTile());
-        for (tile* Tile : neighbour_tiles)
+        for (int k = 0; k < robotList.size(); k++)
         {
-            for (int k = 0; k < robotList.size(); k++)
+            if (Tile == robotList.at(k)->getTile())
             {
-                if (Tile == robotList.at(k)->getTile())
-                {
-                    MapClone->getGraph().remove_edge(Tile, robotList.at(k)->getTile());
-                }
+                MapClone->getGraph().remove_edge(Tile, robotList.at(k)->getTile());
             }
-            localRepairAStar_Search(robot_considered);
         }
     }
-
+    localRepairAStar_Search(robot_considered);
 }
 
 void MainWindow::localRepairAStar_Search(robot* Robot)
@@ -188,3 +185,50 @@ void MainWindow::localRepairAStar_Search(robot* Robot)
     Robot->setPath(resultSequence);
 }
 
+void MainWindow::timerEvent(QTimerEvent* event)
+{
+    if (startStatus)
+    {
+        std::vector<robot*> movingRobots;
+        for (unsigned int i = 0; i < robotList.size(); i++)
+        {
+            if (robotList.at(i)->getGoal() != robotList.at(i)->getPosition() && robotList.at(i)->getNextStep() != NULL)
+            {
+                movingRobots.push_back(robotList.at(i));
+            }
+        }
+
+        for (unsigned int i = 0; i < movingRobots.size(); i++)
+        {
+            robot* robot_to_move = movingRobots.at(i);
+            tile* next_tile = robot_to_move->getNextStep();
+            bool collision = false;
+            for (unsigned int j = 0; j < robotList.size(); j++)
+            {
+                if (robotList.at(j)->getTile() == next_tile)
+                {
+                    collision = true;
+                }
+            }
+
+            if (collision)
+            {
+                map* MapClone(Map);
+                MapClone->getGraph().remove_edge(robot_to_move->getTile(), next_tile);
+                localRepairAStar_Solver(robot_to_move);
+            }
+            else
+            {
+                robot_to_move->takeStep();
+                updateRobotGraphics();
+            }
+
+        }
+
+        if (movingRobots.size() == 0)
+        {
+            startStatus = false;
+        }
+    }
+        
+}

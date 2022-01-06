@@ -12,6 +12,7 @@
 #include <QBrush>
 #include "map.h"
 #include "node.h"
+#include <QTimer>
 
 
 QT_BEGIN_NAMESPACE
@@ -38,7 +39,7 @@ public:
     QString getDiameter_obs() {return diameter_obs;}
     int getObstacleType() {return obstacleIndex;}
     map* Map;
-    void localRepairAStar_Solver();
+    void localRepairAStar_Solver(robot* robot_considered);
     void localRepairAStar_Search(robot* Robot);
 
 
@@ -68,6 +69,14 @@ private:
     void updateRobotGraphics();
     int robot_diameter = 10;
     QList<QBrush> brushes;
+
+    int selected_method = 0;
+    bool startStatus = false;
+
+    int timerId;
+
+protected:
+    void timerEvent(QTimerEvent* event);
 
 
 public:
@@ -132,5 +141,35 @@ public slots:
     {
         diameter_obs = diameter;
     }
+
+    void setMethodIndex(int index)
+    {
+        selected_method = index;
+    }
+
+    void startClicked()
+    {
+        for (unsigned int i = 0; i < robotList.size(); i++)
+        {
+            localRepairAStar_Solver(robotList.at(i));
+        }
+        startStatus = true;
+    }
+
+    void pauseClicked()
+    {
+        startStatus = false;
+    }
+
+    void clearRobots()
+    {
+        startStatus = false;
+        for (robot* robot_to_remove : robotList)
+        {
+            scene->removeItem(robot_to_remove->getGraphicObject());
+        }
+        robotList.clear();
+    }
+
 };
 #endif // MAINWINDOW_H

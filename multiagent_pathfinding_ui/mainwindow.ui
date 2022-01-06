@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>549</width>
+    <width>556</width>
     <height>1012</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>940</y>
+      <y>890</y>
       <width>101</width>
       <height>24</height>
      </rect>
@@ -70,19 +70,6 @@
      </property>
     </item>
    </widget>
-   <widget class="QPushButton" name="solveButton">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>570</y>
-      <width>91</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Solve</string>
-    </property>
-   </widget>
    <widget class="QComboBox" name="methodSelectionComboBox">
     <property name="geometry">
      <rect>
@@ -94,7 +81,7 @@
     </property>
     <item>
      <property name="text">
-      <string>Method 1</string>
+      <string>Local Repair A*</string>
      </property>
     </item>
     <item>
@@ -107,7 +94,7 @@
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>570</y>
+      <y>530</y>
       <width>91</width>
       <height>21</height>
      </rect>
@@ -120,7 +107,7 @@
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>570</y>
+      <y>530</y>
       <width>75</width>
       <height>24</height>
      </rect>
@@ -331,7 +318,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>830</y>
+      <y>780</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -341,7 +328,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>880</y>
+      <y>830</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -351,7 +338,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>830</y>
+      <y>780</y>
       <width>151</width>
       <height>21</height>
      </rect>
@@ -364,7 +351,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>630</y>
+      <y>580</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -374,7 +361,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>730</y>
+      <y>680</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -384,7 +371,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>630</y>
+      <y>580</y>
       <width>71</width>
       <height>21</height>
      </rect>
@@ -397,7 +384,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>680</y>
+      <y>630</y>
       <width>71</width>
       <height>21</height>
      </rect>
@@ -410,7 +397,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>680</y>
+      <y>630</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -420,7 +407,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>780</y>
+      <y>730</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -430,7 +417,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>880</y>
+      <y>830</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -443,7 +430,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>780</y>
+      <y>730</y>
       <width>49</width>
       <height>16</height>
      </rect>
@@ -456,7 +443,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>730</y>
+      <y>680</y>
       <width>49</width>
       <height>16</height>
      </rect>
@@ -1052,14 +1039,27 @@
      </palette>
     </property>
    </widget>
+   <widget class="QPushButton" name="clearRobotsPushbutton">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>930</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Clear Robots</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>549</width>
-     <height>22</height>
+     <width>556</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -1075,7 +1075,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>201</x>
-     <y>591</y>
+     <y>601</y>
     </hint>
     <hint type="destinationlabel">
      <x>291</x>
@@ -1091,7 +1091,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>226</x>
-     <y>641</y>
+     <y>651</y>
     </hint>
     <hint type="destinationlabel">
      <x>277</x>
@@ -1107,7 +1107,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>255</x>
-     <y>694</y>
+     <y>701</y>
     </hint>
     <hint type="destinationlabel">
      <x>287</x>
@@ -1123,7 +1123,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>186</x>
-     <y>745</y>
+     <y>751</y>
     </hint>
     <hint type="destinationlabel">
      <x>129</x>
@@ -1139,7 +1139,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>216</x>
-     <y>793</y>
+     <y>801</y>
     </hint>
     <hint type="destinationlabel">
      <x>106</x>
@@ -1155,7 +1155,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>238</x>
-     <y>835</y>
+     <y>851</y>
     </hint>
     <hint type="destinationlabel">
      <x>299</x>
@@ -1171,7 +1171,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>178</x>
-     <y>903</y>
+     <y>911</y>
     </hint>
     <hint type="destinationlabel">
      <x>295</x>
@@ -1187,10 +1187,10 @@
    <hints>
     <hint type="sourcelabel">
      <x>448</x>
-     <y>905</y>
+     <y>961</y>
     </hint>
     <hint type="destinationlabel">
-     <x>571</x>
+     <x>555</x>
      <y>901</y>
     </hint>
    </hints>
@@ -1202,12 +1202,12 @@
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>473</x>
-     <y>580</y>
+     <x>470</x>
+     <y>631</y>
     </hint>
     <hint type="destinationlabel">
      <x>473</x>
-     <y>620</y>
+     <y>661</y>
     </hint>
    </hints>
   </connection>
@@ -1219,7 +1219,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>410</x>
-     <y>576</y>
+     <y>631</y>
     </hint>
     <hint type="destinationlabel">
      <x>528</x>
@@ -1235,10 +1235,10 @@
    <hints>
     <hint type="sourcelabel">
      <x>528</x>
-     <y>666</y>
+     <y>721</y>
     </hint>
     <hint type="destinationlabel">
-     <x>588</x>
+     <x>555</x>
      <y>635</y>
     </hint>
    </hints>
@@ -1251,10 +1251,10 @@
    <hints>
     <hint type="sourcelabel">
      <x>490</x>
-     <y>716</y>
+     <y>771</y>
     </hint>
     <hint type="destinationlabel">
-     <x>587</x>
+     <x>555</x>
      <y>699</y>
     </hint>
    </hints>
@@ -1267,10 +1267,10 @@
    <hints>
     <hint type="sourcelabel">
      <x>439</x>
-     <y>766</y>
+     <y>821</y>
     </hint>
     <hint type="destinationlabel">
-     <x>590</x>
+     <x>555</x>
      <y>755</y>
     </hint>
    </hints>
@@ -1283,10 +1283,10 @@
    <hints>
     <hint type="sourcelabel">
      <x>458</x>
-     <y>818</y>
+     <y>871</y>
     </hint>
     <hint type="destinationlabel">
-     <x>592</x>
+     <x>555</x>
      <y>799</y>
     </hint>
    </hints>
@@ -1299,10 +1299,10 @@
    <hints>
     <hint type="sourcelabel">
      <x>500</x>
-     <y>647</y>
+     <y>711</y>
     </hint>
     <hint type="destinationlabel">
-     <x>579</x>
+     <x>555</x>
      <y>624</y>
     </hint>
    </hints>
@@ -1315,10 +1315,10 @@
    <hints>
     <hint type="sourcelabel">
      <x>479</x>
-     <y>697</y>
+     <y>761</y>
     </hint>
     <hint type="destinationlabel">
-     <x>595</x>
+     <x>555</x>
      <y>683</y>
     </hint>
    </hints>
@@ -1331,11 +1331,75 @@
    <hints>
     <hint type="sourcelabel">
      <x>458</x>
-     <y>754</y>
+     <y>811</y>
     </hint>
     <hint type="destinationlabel">
-     <x>597</x>
+     <x>555</x>
      <y>738</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>methodSelectionComboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setMethodIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>450</x>
+     <y>598</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>537</x>
+     <y>581</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>startButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>startClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>158</x>
+     <y>561</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>116</x>
+     <y>574</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pauseButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pauseClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>303</x>
+     <y>564</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>243</x>
+     <y>588</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clearRobotsPushbutton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>clearRobots()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>162</x>
+     <y>971</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>239</x>
+     <y>989</y>
     </hint>
    </hints>
   </connection>
@@ -1355,5 +1419,9 @@
   <slot>setWidth_obs(QString)</slot>
   <slot>setLength_obs(QString)</slot>
   <slot>setDiameter_obs(QString)</slot>
+  <slot>setMethodIndex(int)</slot>
+  <slot>startClicked()</slot>
+  <slot>pauseClicked()</slot>
+  <slot>clearRobots()</slot>
  </slots>
 </ui>

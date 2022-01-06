@@ -66,7 +66,7 @@ public:
     }
 
     void setPath(std::vector<tile*> path) { pathSequence = path; }
-    tile* getNextStep() { return pathSequence.at(0); }
+    tile* getNextStep() { return pathSequence.front(); }
     void takeStep()
     {
         Tile = pathSequence.at(0);
