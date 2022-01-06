@@ -14,6 +14,7 @@ private:
     int commRange;
     int detRange;
     QGraphicsEllipseItem* graphicObject;
+    QGraphicsEllipseItem* graphicObject_goal;
     tile* Tile;
     std::vector<tile*> pathSequence;
 
@@ -28,9 +29,17 @@ public:
     {
         graphicObject = item;
     }
+    void setGraphicObject_goal(QGraphicsEllipseItem* item)
+    {
+        graphicObject_goal = item;
+    }
     QGraphicsEllipseItem* getGraphicObject()
     {
         return graphicObject;
+    }
+    QGraphicsEllipseItem* getGraphicObject_goal()
+    {
+        return graphicObject_goal;
     }
     std::vector<int> getPosition()
     {

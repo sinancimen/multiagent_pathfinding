@@ -93,7 +93,12 @@ void MainWindow::addRobotToList()
     Robot->setPosition(getPositionX().toInt(), getPositionY().toInt());
     QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(getPositionX().toInt()+10, getPositionY().toInt(), robot_diameter, robot_diameter);
     circle->setBrush(brushes.at(identity));
+    circle->setOpacity(1.0);
     Robot->setGraphicObject(circle);
+    QGraphicsEllipseItem* circle_goal = new QGraphicsEllipseItem(getGoalX().toInt() + 10, getGoalY().toInt(), robot_diameter, robot_diameter);
+    circle_goal->setBrush(brushes.at(identity));
+    circle_goal->setOpacity(0.25);
+    Robot->setGraphicObject_goal(circle_goal);
     std::vector<tile*> tileList = Map->getTileList();
     for (unsigned int i = 0; i < tileList.size(); i++)
     {
@@ -137,12 +142,24 @@ void MainWindow::updateRobotGraphics()
     {
         robot* Robot = robotList.at(i);
         std::vector<int> position = Robot->getPosition();
+        std::vector<int> goal = Robot->getGoal();
+
         QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(position.at(0) * 20 + 10, position.at(1) * 20, robot_diameter, robot_diameter);
         QGraphicsEllipseItem* old_circle = Robot->getGraphicObject();
         circle->setBrush(brushes.at(Robot->getID()));
+        circle->setOpacity(1.0);
         Robot->setGraphicObject(circle);
+
+        QGraphicsEllipseItem* circle_goal = new QGraphicsEllipseItem(goal.at(0) * 20 + 10, goal.at(1) * 20, robot_diameter, robot_diameter);
+        QGraphicsEllipseItem* old_circle_goal = Robot->getGraphicObject_goal();
+        circle_goal->setBrush(brushes.at(Robot->getID()));
+        circle_goal->setOpacity(0.25);
+        Robot->setGraphicObject_goal(circle_goal);
+        
         scene->addItem(circle);
+        scene->addItem(circle_goal);
         scene->removeItem(old_circle);
+        scene->removeItem(old_circle_goal);
     }
 }
 
