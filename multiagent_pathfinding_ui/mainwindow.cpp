@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     view = ui->graphicsView;
     scene = new QGraphicsScene(this);
-    scene->setSceneRect(20,10, 480, 480);
+    scene->setSceneRect(20,10, 980, 480);
     ui->graphicsView->setScene(scene);
     brushes.push_back(QBrush(Qt::green));
     brushes.push_back(QBrush(Qt::red));
@@ -24,7 +24,36 @@ MainWindow::MainWindow(QWidget *parent)
     brushes.push_back(QBrush(Qt::darkGreen));
     brushes.push_back(QBrush(Qt::darkYellow));
 
-    Map = new map(480, 480);
+    brushes.push_back(QBrush(Qt::green));
+    brushes.push_back(QBrush(Qt::red));
+    brushes.push_back(QBrush(Qt::yellow));
+    brushes.push_back(QBrush(Qt::magenta));
+    brushes.push_back(QBrush(Qt::cyan));
+    brushes.push_back(QBrush(Qt::darkGreen));
+    brushes.push_back(QBrush(Qt::darkYellow));
+    brushes.push_back(QBrush(Qt::green));
+    brushes.push_back(QBrush(Qt::red));
+    brushes.push_back(QBrush(Qt::yellow));
+    brushes.push_back(QBrush(Qt::magenta));
+    brushes.push_back(QBrush(Qt::cyan));
+    brushes.push_back(QBrush(Qt::darkGreen));
+    brushes.push_back(QBrush(Qt::green));
+    brushes.push_back(QBrush(Qt::red));
+    brushes.push_back(QBrush(Qt::yellow));
+    brushes.push_back(QBrush(Qt::magenta));
+    brushes.push_back(QBrush(Qt::cyan));
+    brushes.push_back(QBrush(Qt::darkGreen));
+    brushes.push_back(QBrush(Qt::darkYellow));
+    brushes.push_back(QBrush(Qt::green));
+    brushes.push_back(QBrush(Qt::red));
+    brushes.push_back(QBrush(Qt::yellow));
+    brushes.push_back(QBrush(Qt::magenta));
+    brushes.push_back(QBrush(Qt::cyan));
+    brushes.push_back(QBrush(Qt::darkGreen));
+    brushes.push_back(QBrush(Qt::darkYellow));
+    brushes.push_back(QBrush(Qt::darkYellow));
+
+    Map = new map(50, 25);
     timerId = startTimer(200);
 }
 
@@ -90,13 +119,13 @@ void MainWindow::drawObstacle(obstacle* Obstacle)
     std::vector<int> position = Obstacle->getPosition();
     if (Obstacle->getType())
     {
-        QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(position.at(0)+10, position.at(1), Obstacle->getDiameter(), Obstacle->getDiameter());
+        QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(position.at(0) * 20 + 10, position.at(1)* 20, Obstacle->getDiameter(), Obstacle->getDiameter());
         circle->setBrush(QBrush(Qt::black));
         scene->addItem(circle);
     }
     else
     {
-        QGraphicsRectItem* rectangle = new QGraphicsRectItem(position.at(0)+10, position.at(1), Obstacle->getWidth(), Obstacle->getLength());
+        QGraphicsRectItem* rectangle = new QGraphicsRectItem(position.at(0) * 20 + 10, position.at(1) * 20, Obstacle->getWidth(), Obstacle->getLength());
         rectangle->setBrush(QBrush(Qt::black));
         scene->addItem(rectangle);
     }
@@ -108,7 +137,7 @@ void MainWindow::updateRobotGraphics()
     {
         robot* Robot = robotList.at(i);
         std::vector<int> position = Robot->getPosition();
-        QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(position.at(0)+10, position.at(1), robot_diameter, robot_diameter);
+        QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(position.at(0) * 20 + 10, position.at(1) * 20, robot_diameter, robot_diameter);
         QGraphicsEllipseItem* old_circle = Robot->getGraphicObject();
         circle->setBrush(brushes.at(Robot->getID()));
         Robot->setGraphicObject(circle);

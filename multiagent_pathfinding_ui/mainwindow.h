@@ -67,7 +67,7 @@ private:
     QGraphicsView* view;
     QGraphicsScene* scene;
     void updateRobotGraphics();
-    int robot_diameter = 10;
+    int robot_diameter = 20;
     QList<QBrush> brushes;
 
     int selected_method = 0;

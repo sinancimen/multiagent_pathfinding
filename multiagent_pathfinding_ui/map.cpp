@@ -21,17 +21,17 @@ map::map(int width, int height)
 		{
 			if (Tile->x_pos != 0)
 			{
-				graph.insert_edge(Tile, tile_list.at(k + Width));
-				graph.insert_edge(Tile, tile_list.at(k - Width));
+				graph.insert_edge(Tile, tile_list.at(k + Height));
+				graph.insert_edge(Tile, tile_list.at(k - Height));
 			}
 			else
 			{
-				graph.insert_edge(Tile, tile_list.at(k + Width));
+				graph.insert_edge(Tile, tile_list.at(k + Height));
 			}
 		}
 		else
 		{
-			graph.insert_edge(Tile, tile_list.at(k - Width));
+			graph.insert_edge(Tile, tile_list.at(k - Height));
 		}
 
 		if (Tile->y_pos < Height - 1)
