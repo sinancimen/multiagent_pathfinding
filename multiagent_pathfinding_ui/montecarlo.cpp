@@ -39,8 +39,22 @@ std::vector<QList<robot*>> MainWindow::generateRandomRobots(int num_robot, int n
 					y = (rand() % (Map->getHeight()));
 				}
 			}
+			bool stepsReq = false;
 			int x_goal = (rand() % (Map->getWidth()));
 			int y_goal = (rand() % (Map->getHeight()));
+			while (!stepsReq)
+			{
+				if (abs(x - x_goal) + abs(y - y_goal) == num_steps)
+				{
+					stepsReq = true;
+				}
+				else
+				{
+					x_goal = (rand() % (Map->getWidth()));
+					y_goal = (rand() % (Map->getHeight()));
+				}
+			}
+			
 			duplicate = true;
 			while (duplicate)
 			{
@@ -50,12 +64,23 @@ std::vector<QList<robot*>> MainWindow::generateRandomRobots(int num_robot, int n
 					if ((tempList.at(k)->getGoal().at(0) == x_goal && tempList.at(k)->getGoal().at(1) == y_goal) || (x==x_goal && y==y_goal))
 					{
 						duplicate = true;
+						stepsReq = false;
 					}
 				}
 				if (duplicate)
 				{
-					x_goal = (rand() % (Map->getWidth()));
-					y_goal = (rand() % (Map->getHeight()));
+					while (!stepsReq)
+					{
+						if (abs(x - x_goal) + abs(y - y_goal) == num_steps)
+						{
+							stepsReq = true;
+						}
+						else
+						{
+							x_goal = (rand() % (Map->getWidth()));
+							y_goal = (rand() % (Map->getHeight()));
+						}
+					}
 				}
 			}
 			int id = 0;
