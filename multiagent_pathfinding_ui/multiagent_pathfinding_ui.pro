@@ -14,8 +14,12 @@ SOURCES += \
     obstacle.cpp \
     robot.cpp \
     map.cpp \
-    Node.cpp \
     tile.cpp \
+    montecarlo.cpp \
+    localRepairAStar.cpp \
+    draw.cpp \
+    helpers.cpp \
+
 
 
 HEADERS += \
