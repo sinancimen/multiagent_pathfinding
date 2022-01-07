@@ -46,7 +46,8 @@ public:
     int getObstacleType() {return obstacleIndex;}
     map* Map;
     void localRepairAStar_Solver(robot* robot_considered);
-    void localRepairAStar_Search(robot* Robot);
+    void localRepairAStar_Search(robot* Robot, map* MapClone);
+    tile* MainWindow::findTileAtPosition(int x, int y);
 
 
 
@@ -88,12 +89,6 @@ private:
     QTimer* timer1;
     QTimer* timer2;
 
-protected:
-    
-    
-
-
-public:
 
 
 public slots:
@@ -194,6 +189,7 @@ public slots:
         for (robot* robot_to_remove : robotList)
         {
             scene->removeItem(robot_to_remove->getGraphicObject());
+            scene->removeItem(robot_to_remove->getGraphicObject_goal());
         }
         robotList.clear();
     }

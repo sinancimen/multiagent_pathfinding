@@ -137,7 +137,7 @@ void MainWindow::timerEvent()
             {
                 map* MapClone(Map);
                 MapClone->getGraph().remove_edge(robot_to_move->getTile(), next_tile);
-                localRepairAStar_Solver(robot_to_move);
+                localRepairAStar_Search(robot_to_move, MapClone);
             }
             else
             {
@@ -153,4 +153,19 @@ void MainWindow::timerEvent()
         }
     }
         
+}
+
+tile* MainWindow::findTileAtPosition(int x, int y)
+{
+    tile* Tile;
+    std::vector<tile*> tileList = Map->getTileList();
+    for (unsigned int i = 0; i < tileList.size(); i++)
+    {
+        if ((tileList.at(i)->x_pos == x) && (tileList.at(i)->y_pos == y))
+        {
+            Tile = tileList.at(i);
+            break;
+        }
+    }
+    return Tile;
 }

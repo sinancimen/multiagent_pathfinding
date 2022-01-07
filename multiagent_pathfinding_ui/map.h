@@ -17,5 +17,7 @@ private:
 public:
 	tGraph<tile*> getGraph() { return graph; }
 	std::vector<tile*> getTileList() { return tile_list; }
+	int getWidth() { return Width; }
+	int getHeight() { return Height; }
 };
 

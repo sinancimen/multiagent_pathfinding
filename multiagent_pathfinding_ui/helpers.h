@@ -12,3 +12,5 @@ struct CompareManhattanDistance
         return n1->ManhattanDistance > n2->ManhattanDistance;
     }
 };
+
+

@@ -16,3 +16,4 @@ std::vector<Node*> successors(Node* node, map* Map, robot* Robot)
     }
     return adj_vec;
 }
+

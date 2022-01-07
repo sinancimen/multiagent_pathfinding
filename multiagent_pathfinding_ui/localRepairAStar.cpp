@@ -16,12 +16,11 @@ void MainWindow::localRepairAStar_Solver(robot* robot_considered)
             }
         }
     }
-    localRepairAStar_Search(robot_considered);
+    localRepairAStar_Search(robot_considered, MapClone);
 }
 
-void MainWindow::localRepairAStar_Search(robot* Robot)
+void MainWindow::localRepairAStar_Search(robot* Robot, map* MapClone)
 {
-    map* MapClone(Map);
     std::priority_queue<Node*, std::vector<Node*>, CompareManhattanDistance> queue;
     Node* initialNode = new Node(Robot->getTile(), NULL, calculateHeuristic_Manhattan(Robot->getTile(), Robot->getGoal().at(0), Robot->getGoal().at(1)));
     queue.push(initialNode);
