@@ -1,6 +1,8 @@
 #pragma once
 
-#include "tile.h"
+#include "Node.h"
+#include "robot.h"
+
 class map : public NGraph::Graph
 {
 public:

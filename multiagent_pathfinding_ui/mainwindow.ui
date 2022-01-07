@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1043</width>
-    <height>1012</height>
+    <width>1035</width>
+    <height>988</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>890</y>
+      <y>880</y>
       <width>101</width>
       <height>24</height>
      </rect>
@@ -31,7 +31,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>940</y>
+      <y>880</y>
       <width>101</width>
       <height>24</height>
      </rect>
@@ -44,7 +44,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>530</y>
+      <y>520</y>
       <width>141</width>
       <height>22</height>
      </rect>
@@ -74,7 +74,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>570</y>
+      <y>560</y>
       <width>141</width>
       <height>22</height>
      </rect>
@@ -94,7 +94,7 @@
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>530</y>
+      <y>520</y>
       <width>91</width>
       <height>21</height>
      </rect>
@@ -107,7 +107,7 @@
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>530</y>
+      <y>520</y>
       <width>75</width>
       <height>24</height>
      </rect>
@@ -120,7 +120,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>610</y>
+      <y>600</y>
       <width>91</width>
       <height>21</height>
      </rect>
@@ -140,9 +140,9 @@
     <property name="geometry">
      <rect>
       <x>290</x>
-      <y>640</y>
+      <y>630</y>
       <width>271</width>
-      <height>291</height>
+      <height>251</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -318,7 +318,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>780</y>
+      <y>770</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -328,7 +328,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>830</y>
+      <y>820</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -338,7 +338,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>780</y>
+      <y>770</y>
       <width>151</width>
       <height>21</height>
      </rect>
@@ -351,7 +351,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>580</y>
+      <y>570</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -361,7 +361,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>680</y>
+      <y>670</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -371,7 +371,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>580</y>
+      <y>570</y>
       <width>71</width>
       <height>21</height>
      </rect>
@@ -384,7 +384,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>630</y>
+      <y>620</y>
       <width>71</width>
       <height>21</height>
      </rect>
@@ -397,7 +397,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>630</y>
+      <y>620</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -407,7 +407,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>730</y>
+      <y>720</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -417,7 +417,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>830</y>
+      <y>820</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -430,7 +430,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>730</y>
+      <y>720</y>
       <width>49</width>
       <height>16</height>
      </rect>
@@ -443,7 +443,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>680</y>
+      <y>670</y>
       <width>49</width>
       <height>16</height>
      </rect>
@@ -1043,7 +1043,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>930</y>
+      <y>910</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -1052,13 +1052,95 @@
      <string>Clear Robots</string>
     </property>
    </widget>
+   <widget class="QLabel" name="numOfRobotsLabel">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>530</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Number of robots:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="numOfRobotsTextbox">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>530</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="numOfStepsLabel">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>570</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Number of steps:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="numOfStepsTextbox">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>570</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="numOfSimulationTextbox">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>610</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="numOfSimulationsLabel">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>610</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Number of simulations:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="monteCarloSimButton">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>650</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Run Monte-Carlo Simulations</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1043</width>
+     <width>1035</width>
      <height>21</height>
     </rect>
    </property>
@@ -1187,7 +1269,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>448</x>
-     <y>961</y>
+     <y>922</y>
     </hint>
     <hint type="destinationlabel">
      <x>555</x>
@@ -1395,11 +1477,75 @@
    <hints>
     <hint type="sourcelabel">
      <x>162</x>
-     <y>971</y>
+     <y>961</y>
     </hint>
     <hint type="destinationlabel">
      <x>239</x>
-     <y>989</y>
+     <y>987</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>numOfRobotsTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setNumberOfRobots(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>742</x>
+     <y>561</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>926</x>
+     <y>567</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>numOfStepsTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setNumberOfSteps(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>766</x>
+     <y>607</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>914</x>
+     <y>615</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>numOfSimulationTextbox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setNumberOfSimulations(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>801</x>
+     <y>644</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>917</x>
+     <y>658</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>monteCarloSimButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>monteCarloClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>737</x>
+     <y>686</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>844</x>
+     <y>711</y>
     </hint>
    </hints>
   </connection>
@@ -1423,5 +1569,9 @@
   <slot>startClicked()</slot>
   <slot>pauseClicked()</slot>
   <slot>clearRobots()</slot>
+  <slot>setNumberOfSteps(QString)</slot>
+  <slot>setNumberOfSimulations(QString)</slot>
+  <slot>setNumberOfRobots(QString)</slot>
+  <slot>monteCarloClicked()</slot>
  </slots>
 </ui>

@@ -13,7 +13,10 @@
 #include "map.h"
 #include "node.h"
 #include <QTimer>
-
+#include <queue>
+#include <functional>
+#include <math.h>
+#include <iostream>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,6 +40,9 @@ public:
     QString getLength_obs() { return length_obs;}
     QString getWidth_obs() { return width_obs;}
     QString getDiameter_obs() {return diameter_obs;}
+    QString getNumberOfSteps() { return numberOfSteps;}
+    QString getNumberOfRobots() { return numberOfRobots; }
+    QString getNumberOfSimulations() { return numberOfSimulations; }
     int getObstacleType() {return obstacleIndex;}
     map* Map;
     void localRepairAStar_Solver(robot* robot_considered);
@@ -69,14 +75,22 @@ private:
     void updateRobotGraphics();
     int robot_diameter = 20;
     QList<QBrush> brushes;
+    QString numberOfRobots;
+    QString numberOfSteps;
+    QString numberOfSimulations;
 
     int selected_method = 0;
     bool startStatus = false;
+    std::vector<QList<robot*>> generateRandomRobots(int num_robot, int num_steps, int num_simulations);
+    std::vector<QList<robot*>> montecarlo_list;
+    bool montecarloStatus = false;
 
-    int timerId;
+    QTimer* timer1;
+    QTimer* timer2;
 
 protected:
-    void timerEvent(QTimerEvent* event);
+    
+    
 
 
 public:
@@ -85,12 +99,12 @@ public:
 public slots:
 
     void addToObstacleList();
-    void clearObstacleList();
-    QList<obstacle*> getObstacleList();
+    void clearObstacleList() { obstacleList.clear(); };
+    QList<obstacle*> getObstacleList() { return obstacleList; };
 
     void addRobotToList();
-    void clearRobotList();
-    QList<robot*> getRobotList();
+    void clearRobotList() { robotList.clear(); };
+    QList<robot*> getRobotList() { return robotList; };
 
     void setPositionX(QString position)
     {
@@ -141,7 +155,18 @@ public slots:
     {
         diameter_obs = diameter;
     }
-
+    void setNumberOfRobots(QString number)
+    {
+        numberOfRobots = number;
+    }
+    void setNumberOfSteps(QString number)
+    {
+        numberOfSteps = number;
+    }
+    void setNumberOfSimulations(QString number)
+    {
+        numberOfSimulations = number;
+    }
     void setMethodIndex(int index)
     {
         selected_method = index;
@@ -149,7 +174,7 @@ public slots:
 
     void startClicked()
     {
-        for (unsigned int i = 0; i < robotList.size(); i++)
+        for (int i = 0; i < robotList.size(); i++)
         {
             localRepairAStar_Solver(robotList.at(i));
         }
@@ -161,6 +186,8 @@ public slots:
         startStatus = false;
     }
 
+    void monteCarloClicked();
+
     void clearRobots()
     {
         startStatus = false;
@@ -170,6 +197,8 @@ public slots:
         }
         robotList.clear();
     }
+    void montecarloTimerEvent();
+    void timerEvent();
 
 };
 #endif // MAINWINDOW_H

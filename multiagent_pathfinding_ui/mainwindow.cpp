@@ -1,9 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <queue>
-#include <functional>
-#include <math.h>
-#include <iostream>
 #include "helpers.h"
 
 
@@ -54,12 +50,19 @@ MainWindow::MainWindow(QWidget *parent)
     brushes.push_back(QBrush(Qt::darkYellow));
 
     Map = new map(50, 25);
-    timerId = startTimer(200);
+    timer1 = new QTimer(this);
+    connect(timer1, SIGNAL(timeout()), this, SLOT(timerEvent()));
+    timer1->setInterval(200);
+    timer1->start();
+    timer2 = new QTimer(this);
+    connect(timer2, SIGNAL(timeout()), this, SLOT(montecarloTimerEvent()));
+    timer2->setInterval(700);
+    timer2->start();
 }
 
 MainWindow::~MainWindow()
 {
-    killTimer(timerId);
+    //killTimer(timerId);
     delete ui;
 }
 
@@ -68,14 +71,6 @@ void MainWindow::addToObstacleList()
     obstacle* Obstacle = new obstacle(1, getObstacleType(), getPositionX_obs().toInt(), getPositionY_obs().toInt(), getLength_obs().toInt(), getWidth_obs().toInt(), getDiameter_obs().toInt());
     obstacleList.append(Obstacle);
     drawObstacle(Obstacle);
-}
-void MainWindow::clearObstacleList()
-{
-    obstacleList.clear();
-}
-QList<obstacle*> MainWindow::getObstacleList()
-{
-    return obstacleList;
 }
 
 void MainWindow::addRobotToList()
@@ -111,132 +106,13 @@ void MainWindow::addRobotToList()
     robotList.append(Robot);
     updateRobotGraphics();
 }
-void MainWindow::clearRobotList()
-{
-    robotList.clear();
-}
-QList<robot*> MainWindow::getRobotList()
-{
-    return robotList;
-}
-void MainWindow::drawObstacle(obstacle* Obstacle)
-{
-    std::vector<int> position = Obstacle->getPosition();
-    if (Obstacle->getType())
-    {
-        QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(position.at(0) * 20 + 10, position.at(1)* 20, Obstacle->getDiameter() * 20, Obstacle->getDiameter() * 20);
-        circle->setBrush(QBrush(Qt::black));
-        scene->addItem(circle);
-    }
-    else
-    {
-        QGraphicsRectItem* rectangle = new QGraphicsRectItem(position.at(0) * 20 + 10, position.at(1) * 20, Obstacle->getWidth() * 20, Obstacle->getLength() * 20);
-        rectangle->setBrush(QBrush(Qt::black));
-        scene->addItem(rectangle);
-    }
-}
 
-void MainWindow::updateRobotGraphics()
-{
-    for (int i=0; i<robotList.size(); i++)
-    {
-        robot* Robot = robotList.at(i);
-        std::vector<int> position = Robot->getPosition();
-        std::vector<int> goal = Robot->getGoal();
-
-        QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(position.at(0) * 20 + 10, position.at(1) * 20, robot_diameter, robot_diameter);
-        QGraphicsEllipseItem* old_circle = Robot->getGraphicObject();
-        circle->setBrush(brushes.at(Robot->getID()));
-        circle->setOpacity(1.0);
-        Robot->setGraphicObject(circle);
-
-        QGraphicsEllipseItem* circle_goal = new QGraphicsEllipseItem(goal.at(0) * 20 + 10, goal.at(1) * 20, robot_diameter, robot_diameter);
-        QGraphicsEllipseItem* old_circle_goal = Robot->getGraphicObject_goal();
-        circle_goal->setBrush(brushes.at(Robot->getID()));
-        circle_goal->setOpacity(0.25);
-        Robot->setGraphicObject_goal(circle_goal);
-        
-        scene->addItem(circle);
-        scene->addItem(circle_goal);
-        scene->removeItem(old_circle);
-        scene->removeItem(old_circle_goal);
-    }
-}
-
-
-void MainWindow::localRepairAStar_Solver(robot* robot_considered)
-{
-    map* MapClone(Map);
-    std::set<tile*> neighbour_tiles = MapClone->getGraph().out_neighbors(robot_considered->getTile());
-    for (tile* Tile : neighbour_tiles)
-    {
-        for (int k = 0; k < robotList.size(); k++)
-        {
-            if (Tile == robotList.at(k)->getTile())
-            {
-                MapClone->getGraph().remove_edge(Tile, robotList.at(k)->getTile());
-            }
-        }
-    }
-    localRepairAStar_Search(robot_considered);
-}
-
-void MainWindow::localRepairAStar_Search(robot* Robot)
-{
-    map* MapClone(Map);
-    std::priority_queue<Node*, std::vector<Node*>, CompareManhattanDistance> queue;
-    Node* initialNode = new Node(Robot->getTile(), NULL, calculateHeuristic_Manhattan(Robot->getTile(), Robot->getGoal().at(0), Robot->getGoal().at(1)));
-    queue.push(initialNode);
-    Node* result = NULL;
-    std::vector<tile*> labeled_tiles;
-    bool duplicate = false;
-
-    while (true)
-    {
-        std::vector<Node*> successors_list = successors(queue.top(), MapClone, Robot);
-        Node* node_temp = queue.top();
-        labeled_tiles.push_back(queue.top()->m_tile);
-
-        if (queue.top()->m_tile->x_pos == Robot->getGoal().at(0) && queue.top()->m_tile->y_pos == Robot->getGoal().at(1))
-        {
-            result = queue.top();
-            break;
-        }
-        queue.pop();
-
-        for (unsigned int i = 0; i < successors_list.size(); i++)
-        {
-            duplicate = false;
-            for (unsigned int j = 0; j < labeled_tiles.size(); j++)
-            {
-                if (labeled_tiles.at(j) == successors_list.at(i)->m_tile)
-                {
-                    duplicate = true;
-                }
-            }
-            if (!duplicate)
-                queue.push(successors_list.at(i));
-        }
-    }
-
-    std::vector<tile*> resultSequence;
-    resultSequence.push_back(result->m_tile);
-    Node* parentNode = result->m_parent;
-    while (parentNode != NULL)
-    {
-        resultSequence.insert(resultSequence.begin(), parentNode->m_tile);
-        parentNode = parentNode->m_parent;
-    }
-    resultSequence.erase(resultSequence.begin());
-    Robot->setPath(resultSequence);
-}
-
-void MainWindow::timerEvent(QTimerEvent* event)
+void MainWindow::timerEvent()
 {
     if (startStatus)
     {
         std::vector<robot*> movingRobots;
-        for (unsigned int i = 0; i < robotList.size(); i++)
+        for (int i = 0; i < robotList.size(); i++)
         {
             if (robotList.at(i)->getGoal() != robotList.at(i)->getPosition() && robotList.at(i)->getNextStep() != NULL)
             {
@@ -249,7 +125,7 @@ void MainWindow::timerEvent(QTimerEvent* event)
             robot* robot_to_move = movingRobots.at(i);
             tile* next_tile = robot_to_move->getNextStep();
             bool collision = false;
-            for (unsigned int j = 0; j < robotList.size(); j++)
+            for (int j = 0; j < robotList.size(); j++)
             {
                 if (robotList.at(j)->getTile() == next_tile)
                 {
