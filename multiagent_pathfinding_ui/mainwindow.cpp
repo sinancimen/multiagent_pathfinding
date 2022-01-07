@@ -135,8 +135,8 @@ void MainWindow::timerEvent()
 
             if (collision)
             {
-                map* MapClone(Map);
-                MapClone->getGraph().remove_edge(robot_to_move->getTile(), next_tile);
+                map* MapClone = new map(Map);
+                MapClone->graph.remove_edge(robot_to_move->getTile(), next_tile);
                 localRepairAStar_Search(robot_to_move, MapClone);
             }
             else

@@ -4,7 +4,7 @@
 
 void MainWindow::localRepairAStar_Solver(robot* robot_considered)
 {
-    map* MapClone(Map);
+    map* MapClone = new map(Map);
     std::set<tile*> neighbour_tiles = MapClone->getGraph().out_neighbors(robot_considered->getTile());
     for (tile* Tile : neighbour_tiles)
     {
@@ -12,7 +12,7 @@ void MainWindow::localRepairAStar_Solver(robot* robot_considered)
         {
             if (Tile == robotList.at(k)->getTile())
             {
-                MapClone->getGraph().remove_edge(Tile, robotList.at(k)->getTile());
+                MapClone->graph.remove_edge(Tile, robotList.at(k)->getTile());
             }
         }
     }

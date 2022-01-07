@@ -7,10 +7,11 @@ class map : public NGraph::Graph
 {
 public:
 	map(int width, int height);
+	map(map* Map);
+	tGraph<tile*> graph;
 private:
 	int Width;
 	int Height;
-	tGraph<tile*> graph;
 	std::vector<tile*> tile_list;
 
 

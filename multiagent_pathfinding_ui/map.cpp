@@ -52,3 +52,13 @@ map::map(int width, int height)
 		}
 	}
 }
+
+map::map(map* Map)
+{
+	Width = Map->getWidth();
+	Width = Map->getHeight();
+	graph = Map->getGraph();
+	tile_list = Map->getTileList();
+
+
+}
