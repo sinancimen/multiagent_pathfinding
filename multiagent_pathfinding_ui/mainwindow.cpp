@@ -68,9 +68,55 @@ MainWindow::~MainWindow()
 
 void MainWindow::addToObstacleList()
 {
-    obstacle* Obstacle = new obstacle(1, getObstacleType(), getPositionX_obs().toInt(), getPositionY_obs().toInt(), getLength_obs().toInt(), getWidth_obs().toInt(), getDiameter_obs().toInt());
+    int posx = getPositionX_obs().toInt();
+    int posy = getPositionY_obs().toInt();
+    int length = getLength_obs().toInt();
+    int width = getWidth_obs().toInt();
+    int diameter = getDiameter_obs().toInt();
+    int type = getObstacleType();
+    obstacle* Obstacle = new obstacle(1, type, posx, posy, length, width, diameter);
     obstacleList.append(Obstacle);
-    drawObstacle(Obstacle);
+    std::vector<int> position = Obstacle->getPosition();
+    std::set<tile*> neighbours;
+    if (type == 0)
+    {
+        QGraphicsRectItem* rectangle = new QGraphicsRectItem(position.at(0) * 20 + 10, position.at(1) * 20, Obstacle->getWidth() * 20, Obstacle->getLength() * 20);
+        Obstacle->setGraphicalItem_rect(rectangle);
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < length; j++)
+            {
+                tile* temp_tile = findTileAtPosition(posx + i, posy + j);
+                neighbours = Map->getGraph().out_neighbors(temp_tile);
+                for (tile* adj_tile : neighbours)
+                {
+                    Map->graph.remove_edge(adj_tile, temp_tile);
+
+                }
+                neighbours.clear();
+            }
+        }
+    }
+    else
+    {
+        QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(position.at(0) * 20 + 10, position.at(1) * 20, Obstacle->getDiameter() * 20, Obstacle->getDiameter() * 20);
+        Obstacle->setGraphicalItem_circle(circle);
+        for (int i = -std::ceil(diameter/2); i < std::ceil(diameter/2); i++)
+        {
+            for (int j = -std::ceil(diameter / 2); j < std::ceil(diameter / 2); j++)
+            {
+                tile* temp_tile = findTileAtPosition(posx + i, posy + j);
+                neighbours = Map->getGraph().out_neighbors(temp_tile);
+                for (tile* adj_tile : neighbours)
+                {
+                    Map->graph.remove_edge(adj_tile, temp_tile);
+
+                }
+                neighbours.clear();
+            }
+        }
+    }
+    updateObstacleGraphics();
 }
 
 void MainWindow::addRobotToList()

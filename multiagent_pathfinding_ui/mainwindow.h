@@ -70,7 +70,7 @@ private:
     QString length_obs;
     QString width_obs;
     QString diameter_obs;
-    void drawObstacle(obstacle* Obstacle);
+    void updateObstacleGraphics();
     QGraphicsView* view;
     QGraphicsScene* scene;
     void updateRobotGraphics();
@@ -192,6 +192,24 @@ public slots:
             scene->removeItem(robot_to_remove->getGraphicObject_goal());
         }
         robotList.clear();
+    }
+
+    void clearObstacles()
+    {
+        startStatus = false;
+        for (obstacle* obstacle_to_remove : obstacleList)
+        {
+            if (obstacle_to_remove->getType())
+            {
+                scene->removeItem(obstacle_to_remove->getGraphicalItem_circle());
+            }
+            else
+            {
+                scene->removeItem(obstacle_to_remove->getGraphicalItem_rect());
+            }
+        }
+        obstacleList.clear();
+        Map = new map(50, 25);
     }
     void montecarloTimerEvent();
     void timerEvent();

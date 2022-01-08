@@ -1,20 +1,31 @@
 #include "mainwindow.h"
 
-void MainWindow::drawObstacle(obstacle* Obstacle)
+void MainWindow::updateObstacleGraphics()
 {
-    std::vector<int> position = Obstacle->getPosition();
-    if (Obstacle->getType())
+    for (int i = 0; i < obstacleList.size(); i++)
     {
-        QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(position.at(0) * 20 + 10, position.at(1) * 20, Obstacle->getDiameter() * 20, Obstacle->getDiameter() * 20);
-        circle->setBrush(QBrush(Qt::black));
-        scene->addItem(circle);
+        obstacle* Obstacle = obstacleList.at(i);
+        std::vector<int> position = Obstacle->getPosition();
+        if (Obstacle->getType())
+        {
+            QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(position.at(0) * 20 + 10, position.at(1) * 20, Obstacle->getDiameter() * 20, Obstacle->getDiameter() * 20);
+            QGraphicsEllipseItem* old_circle = Obstacle->getGraphicalItem_circle();
+            circle->setBrush(QBrush(Qt::black));
+            Obstacle->setGraphicalItem_circle(circle);
+            scene->addItem(circle);
+            scene->removeItem(old_circle);
+        }
+        else
+        {
+            QGraphicsRectItem* rectangle = new QGraphicsRectItem(position.at(0) * 20 + 10, position.at(1) * 20, Obstacle->getWidth() * 20, Obstacle->getLength() * 20);
+            QGraphicsRectItem* old_rectangle = Obstacle->getGraphicalItem_rect();
+            rectangle->setBrush(QBrush(Qt::black));
+            Obstacle->setGraphicalItem_rect(rectangle);
+            scene->addItem(rectangle);
+            scene->removeItem(old_rectangle);
+        }
     }
-    else
-    {
-        QGraphicsRectItem* rectangle = new QGraphicsRectItem(position.at(0) * 20 + 10, position.at(1) * 20, Obstacle->getWidth() * 20, Obstacle->getLength() * 20);
-        rectangle->setBrush(QBrush(Qt::black));
-        scene->addItem(rectangle);
-    }
+    
 }
 
 void MainWindow::updateRobotGraphics()

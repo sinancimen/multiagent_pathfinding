@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1035</width>
+    <width>1034</width>
     <height>988</height>
    </rect>
   </property>
@@ -1134,13 +1134,26 @@
      <string>Run Monte-Carlo Simulations</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="clearObstacleButton">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>910</y>
+      <width>101</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Clear Obstacles</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1035</width>
+     <width>1034</width>
      <height>21</height>
     </rect>
    </property>
@@ -1549,6 +1562,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>clearObstacleButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>clearObstacles()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>428</x>
+     <y>947</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>592</x>
+     <y>957</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>setPositionX(QString)</slot>
@@ -1573,5 +1602,6 @@
   <slot>setNumberOfSimulations(QString)</slot>
   <slot>setNumberOfRobots(QString)</slot>
   <slot>monteCarloClicked()</slot>
+  <slot>clearObstacles()</slot>
  </slots>
 </ui>

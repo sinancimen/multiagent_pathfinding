@@ -11,6 +11,8 @@ class obstacle : public QObject
 
 private:
     int id, type, x_pos, y_pos, length, width, diameter;
+    QGraphicsEllipseItem* circle;
+    QGraphicsRectItem* rectangle;
 public:
     explicit obstacle(int identifier, int obstype, int posx, int posy, int len, int width_, int dia, QObject *parent = nullptr);
     std::vector<int> getPosition()
@@ -35,6 +37,22 @@ public:
     int getDiameter()
     {
         return diameter;
+    }
+    QGraphicsEllipseItem* getGraphicalItem_circle()
+    {
+        return circle;
+    }
+    QGraphicsRectItem* getGraphicalItem_rect()
+    {
+        return rectangle;
+    }
+    void setGraphicalItem_circle(QGraphicsEllipseItem* item)
+    {
+        circle = item;
+    }
+    void setGraphicalItem_rect(QGraphicsRectItem* item)
+    {
+        rectangle = item;
     }
 
 signals:
