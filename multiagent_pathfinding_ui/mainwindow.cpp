@@ -160,9 +160,12 @@ void MainWindow::timerEvent()
         std::vector<robot*> movingRobots;
         for (int i = 0; i < robotList.size(); i++)
         {
-            if (robotList.at(i)->getGoal() != robotList.at(i)->getPosition() && robotList.at(i)->getNextStep() != NULL)
+            if ((robotList.at(i)->getGoal().at(0) != robotList.at(i)->getPosition().at(0)) || (robotList.at(i)->getGoal().at(1) != robotList.at(i)->getPosition().at(1)))
             {
-                movingRobots.push_back(robotList.at(i));
+                if (robotList.at(i)->getNextStep() != NULL)
+                {
+                    movingRobots.push_back(robotList.at(i));
+                }
             }
         }
 
@@ -173,7 +176,7 @@ void MainWindow::timerEvent()
             bool collision = false;
             for (int j = 0; j < robotList.size(); j++)
             {
-                if (robotList.at(j)->getTile() == next_tile)
+                if (robotList.at(j)->getNextStep() == next_tile && (robotList.at(j)->getPosition() != robot_to_move->getPosition()))
                 {
                     collision = true;
                 }
