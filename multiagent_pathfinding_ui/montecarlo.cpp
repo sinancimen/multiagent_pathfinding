@@ -7,6 +7,9 @@ void MainWindow::monteCarloClicked()
 	int num_of_robots = getNumberOfRobots().toInt();
 	int num_of_steps = getNumberOfSteps().toInt();
 	int num_of_simulations = getNumberOfSimulations().toInt();
+	this->sumOfPath = 0;
+	this->sumOfTime = 0;
+	this->noOfFailures = 0;
 	montecarlo_list = generateRandomRobots(num_of_robots, num_of_steps, num_of_simulations);
 	montecarloStatus = true;
 }

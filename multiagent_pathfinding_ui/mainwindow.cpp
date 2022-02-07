@@ -174,26 +174,36 @@ void MainWindow::timerEvent()
             robot* robot_to_move = movingRobots.at(i);
             tile* next_tile = robot_to_move->getNextStep();
             bool collision = false;
-            for (int j = 0; j < robotList.size(); j++)
+
+            if (selected_method == 0)
             {
-                if (robotList.at(j)->getNextStep() == next_tile && (robotList.at(j)->getPosition() != robot_to_move->getPosition()))
+                for (int j = 0; j < robotList.size(); j++)
                 {
-                    collision = true;
+                    if (robotList.at(j)->getNextStep() == next_tile && (robotList.at(j)->getPosition() != robot_to_move->getPosition()))
+                    {
+                        collision = true;
+                    }
+                }
+
+                if (collision)
+                {
+                    map* MapClone = new map(Map);
+                    MapClone->graph.remove_edge(robot_to_move->getTile(), next_tile);
+                    localRepairAStar_Search(robot_to_move, MapClone);
+                }
+                else
+                {
+                    robot_to_move->takeStep();
+                    updateRobotGraphics();
                 }
             }
 
-            if (collision)
-            {
-                map* MapClone = new map(Map);
-                MapClone->graph.remove_edge(robot_to_move->getTile(), next_tile);
-                localRepairAStar_Search(robot_to_move, MapClone);
-            }
-            else
+            else if (selected_method == 1)
             {
                 robot_to_move->takeStep();
                 updateRobotGraphics();
             }
-
+            
         }
 
         if (movingRobots.size() == 0)

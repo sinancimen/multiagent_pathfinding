@@ -17,6 +17,7 @@
 #include <functional>
 #include <math.h>
 #include <iostream>
+#include <TimedNode.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -47,7 +48,10 @@ public:
     map* Map;
     void localRepairAStar_Solver(robot* robot_considered);
     void localRepairAStar_Search(robot* Robot, map* MapClone);
+    void coopAStar_Solver(robot* robot_considered);
+    void coopAStar_Search(robot* Robot, map* MapClone);
     tile* MainWindow::findTileAtPosition(int x, int y);
+    std::vector<TimedNode*> reservationTable;
 
 
 
@@ -88,6 +92,10 @@ private:
 
     QTimer* timer1;
     QTimer* timer2;
+
+    int sumOfTime;
+    int noOfFailures;
+    int sumOfPath;
 
 
 
@@ -169,11 +177,23 @@ public slots:
 
     void startClicked()
     {
-        for (int i = 0; i < robotList.size(); i++)
+        if (selected_method == 0)
         {
-            localRepairAStar_Solver(robotList.at(i));
+            for (int i = 0; i < robotList.size(); i++)
+            {
+                localRepairAStar_Solver(robotList.at(i));
+            }
+            startStatus = true;
         }
-        startStatus = true;
+        else if (selected_method == 1)
+        {
+            reservationTable.clear();
+            for (int i = 0; i < robotList.size(); i++)
+            {
+                coopAStar_Solver(robotList.at(i));
+            }
+            startStatus = true;
+        }
     }
 
     void pauseClicked()
