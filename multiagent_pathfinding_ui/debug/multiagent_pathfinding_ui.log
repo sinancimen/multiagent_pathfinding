@@ -1,14 +1,3 @@
 ﻿  Reading Qt configuration (C:/Qt/5.12.12/msvc2017_64/bin/qmake)
-  Uic'ing mainwindow.ui...
-  Moc'ing obstacle.h...
-  Moc'ing robot.h...
-   Warning: Failed to resolve include "C:/Users/cimbo/OneDrive/Masa?st?/repos/multiagent_pathfinding/multiagent_pathfinding_ui/Debug/moc_predefs.h" for moc file C:\Users\cimbo\OneDrive\Masa³st³\repos\multiagent_pathfinding\multiagent_pathfinding_ui\robot.h
-   Warning: Failed to resolve include "C:/Users/cimbo/OneDrive/Masa?st?/repos/multiagent_pathfinding/multiagent_pathfinding_ui/Debug/moc_predefs.h" for moc file C:\Users\cimbo\OneDrive\Masa³st³\repos\multiagent_pathfinding\multiagent_pathfinding_ui\obstacle.h
-  mainwindow.cpp
-C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\ngraph.hpp(372,1): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\ngraph.hpp(356): message : while compiling class template member function 'bool NGraph::tGraph<tile *>::remove_edge(std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>,std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>)'
-C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\ngraph.hpp(390): message : see reference to function template instantiation 'bool NGraph::tGraph<tile *>::remove_edge(std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>,std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>)' being compiled
-C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\map.h(11): message : see reference to class template instantiation 'NGraph::tGraph<tile *>' being compiled
-  moc_obstacle.cpp
-  moc_robot.cpp
+  montecarlo.cpp
   multiagent_pathfinding_ui.vcxproj -> C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\debug\multiagent_pathfinding_ui.exe

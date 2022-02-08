@@ -54,6 +54,8 @@ public:
     std::vector<TimedNode*> reservationTable;
     void setTimeTextbox(QString text);
     void setPathTextbox(QString text);
+    int totalTimeLRA;
+    int totalPathLRA;
 
 
 

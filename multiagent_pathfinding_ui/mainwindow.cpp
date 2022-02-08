@@ -133,6 +133,11 @@ void MainWindow::timerEvent()
 {
     if (startStatus)
     {
+        if (selected_method == 0)
+        {
+            totalTimeLRA += 1;
+        }
+
         std::vector<robot*> movingRobots;
         for (int i = 0; i < robotList.size(); i++)
         {
@@ -143,6 +148,11 @@ void MainWindow::timerEvent()
                     movingRobots.push_back(robotList.at(i));
                 }
             }
+        }
+
+        if (selected_method == 0)
+        {
+            totalPathLRA += movingRobots.size();
         }
 
         for (unsigned int i = 0; i < movingRobots.size(); i++)
@@ -182,7 +192,7 @@ void MainWindow::timerEvent()
             
         }
 
-        if (movingRobots.size() == 0)
+        if (movingRobots.size() == 0 )
         {
             startStatus = false;
             if (montecarloStatus)
