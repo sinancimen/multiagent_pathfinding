@@ -61,6 +61,15 @@ public:
     int pathLRA;
     bool failure;
     int failureCount;
+    std::vector<int> whcAStar_Solver(robot* robot_considered);
+    std::vector<int> whcAStar_Search(robot* Robot, map* MapClone);
+    void whcAStar_setGoals();
+    void whcAStar_doOrdering();
+    const int window = 10;
+    int timeWhca;
+    bool checkForStatus();
+    int totalTimeWhca;
+    int timeWhcaSim;
 
 
 
@@ -207,6 +216,16 @@ public slots:
             }
             startStatus = true;
             averagePath = sumOfPath / robotList.size();
+        }
+        else
+        {
+            timeWhca = 0;
+            reservationTable.clear();
+            for (int i = 0; i < robotList.size(); i++)
+            {
+                whcAStar_Solver(robotList.at(i));
+            }
+            startStatus = true;
         }
     }
 

@@ -137,18 +137,44 @@ void MainWindow::timerEvent()
         {
             timeLRA += 1;
         }
+        else if (selected_method == 2)
+        {
+            timeWhcaSim++;
+        }
 
         std::vector<robot*> movingRobots;
-        for (int i = 0; i < robotList.size(); i++)
+        if (selected_method != 2)
         {
-            if ((robotList.at(i)->getGoal().at(0) != robotList.at(i)->getPosition().at(0)) || (robotList.at(i)->getGoal().at(1) != robotList.at(i)->getPosition().at(1)))
+            for (int i = 0; i < robotList.size(); i++)
             {
-                if (robotList.at(i)->getNextStep() != NULL)
+                if ((robotList.at(i)->getGoal().at(0) != robotList.at(i)->getPosition().at(0)) || (robotList.at(i)->getGoal().at(1) != robotList.at(i)->getPosition().at(1)))
                 {
-                    movingRobots.push_back(robotList.at(i));
+                    if (robotList.at(i)->getNextStep() != NULL)
+                    {
+                        movingRobots.push_back(robotList.at(i));
+                    }
                 }
             }
         }
+        else
+        {
+            timeWhca++;
+            if (timeWhca > window / 2)
+            {
+                timeWhca = 0;
+                whcAStar_doOrdering();
+                reservationTable.clear();
+                for (int i = 0; i < robotList.size(); i++)
+                {
+                    whcAStar_Solver(robotList.at(i));
+                }
+            }
+            for (int i = 0; i < robotList.size(); i++)
+            {
+                movingRobots.push_back(robotList.at(i));
+            }
+        }
+        
 
         if (selected_method == 0)
         {
@@ -188,6 +214,17 @@ void MainWindow::timerEvent()
             {
                 robot_to_move->takeStep();
                 updateRobotGraphics();
+            }
+
+            else if (selected_method == 2)
+            {
+                robot_to_move->takeStep();
+                updateRobotGraphics();
+                bool finish = checkForStatus();
+                if (finish)
+                {
+                    startStatus = false;
+                }
             }
             
         }

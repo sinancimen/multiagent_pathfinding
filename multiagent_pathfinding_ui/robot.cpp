@@ -8,4 +8,5 @@ robot::robot(int identifier, int communicationRange, int detectionRange, int xgo
     detRange = detectionRange;
     x_goal = xgoal;
     y_goal = ygoal;
+
 }

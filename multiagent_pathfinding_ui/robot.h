@@ -10,7 +10,7 @@ class robot : public QObject
 {
     Q_OBJECT
 private:
-    int id, x_pos, y_pos, x_goal, y_goal;
+    int id, x_pos, y_pos, x_goal, y_goal, x_goal_temp, y_goal_temp;
     int commRange;
     int detRange;
     QGraphicsEllipseItem* graphicObject;
@@ -74,6 +74,20 @@ public:
         return goal;
     }
 
+    std::vector<int> getTempGoal()
+    {
+        std::vector<int> tempGoal;
+        tempGoal.push_back(x_goal_temp);
+        tempGoal.push_back(y_goal_temp);
+        return tempGoal;
+    }
+
+    void setTempGoal(int xpos, int ypos)
+    {
+        x_goal_temp = xpos;
+        y_goal_temp = ypos;
+    }
+
     void setPath(std::vector<tile*> path) { pathSequence = path; }
     tile* getNextStep() 
     {
@@ -88,6 +102,9 @@ public:
         }
         return next_step; 
     }
+
+    std::vector<tile*> getPath() { return pathSequence; }
+
     void takeStep()
     {
         Tile = pathSequence.at(0);
