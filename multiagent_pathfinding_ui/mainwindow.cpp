@@ -135,7 +135,7 @@ void MainWindow::timerEvent()
     {
         if (selected_method == 0)
         {
-            totalTimeLRA += 1;
+            timeLRA += 1;
         }
 
         std::vector<robot*> movingRobots;
@@ -152,7 +152,7 @@ void MainWindow::timerEvent()
 
         if (selected_method == 0)
         {
-            totalPathLRA += movingRobots.size();
+            pathLRA += movingRobots.size();
         }
 
         for (unsigned int i = 0; i < movingRobots.size(); i++)
@@ -202,6 +202,12 @@ void MainWindow::timerEvent()
                 sumOfPath = 0;
             }
         }
+
+        if (montecarloStatus && selected_method == 0 && timeLRA > 2 * getNumberOfSteps().toInt())
+        {
+            failure = true;
+            startStatus = false;
+        }
     }
         
 }
@@ -231,3 +237,7 @@ void MainWindow::setPathTextbox(QString text)
     ui->totalPathTextbox->setText(text);
 }
 
+void MainWindow::setFailureTextbox(QString text)
+{
+    ui->failureTextbox->setText(text);
+}

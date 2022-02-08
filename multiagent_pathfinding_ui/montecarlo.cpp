@@ -15,6 +15,9 @@ void MainWindow::monteCarloClicked()
 	this->sumOfAveragePath = 0.0;
 	this->totalTimeLRA = 0;
 	this->totalPathLRA = 0;
+	this->pathLRA = 0;
+	this->timeLRA = 0;
+	this->failureCount = 0;
 	montecarlo_list = generateRandomRobots(num_of_robots, num_of_steps, num_of_simulations);
 	montecarloStatus = true;
 }
@@ -120,6 +123,21 @@ void MainWindow::montecarloTimerEvent()
 	{
 		if (montecarlo_list.size() > 0)
 		{
+			if (selected_method == 0)
+			{
+				if (failure)
+				{
+					failureCount++;
+					failure = false;
+				}
+				else
+				{
+					totalPathLRA += pathLRA;
+					totalTimeLRA += timeLRA;
+				}
+				timeLRA = 0;
+				pathLRA = 0;
+			}
 			clearRobots();
 			robotList = montecarlo_list.at(0);
 			startClicked();
@@ -138,16 +156,19 @@ void MainWindow::montecarloTimerEvent()
 				QString timestr = QString::number(time);
 				setTimeTextbox(timestr);
 				setPathTextbox(pathstr);
+				setFailureTextbox("0");
 			}
 			else if (selected_method == 0)
 			{
-				double path_per_sim = totalPathLRA / numOfSims;
+				double path_per_sim = totalPathLRA / (numOfSims - failureCount);
 				double path_per_robot = path_per_sim / numOfRobots;
 				QString pathstr = QString::number(path_per_robot);
 				double time = totalTimeLRA / numOfSims - 1.0;
 				QString timestr = QString::number(time);
+				QString failstr = QString::number(failureCount);
 				setTimeTextbox(timestr);
 				setPathTextbox(pathstr);
+				setFailureTextbox(failstr);
 			}
 			
 		}
