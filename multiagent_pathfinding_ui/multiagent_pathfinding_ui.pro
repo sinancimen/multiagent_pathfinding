@@ -20,6 +20,7 @@ SOURCES += \
     draw.cpp \
     helpers.cpp \
     coopAStar.cpp \
+    whcAStar.cpp \
 
 
 
