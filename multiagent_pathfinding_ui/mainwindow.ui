@@ -43,9 +43,9 @@
    <widget class="QComboBox" name="methodSelectionComboBox">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>370</x>
       <y>530</y>
-      <width>181</width>
+      <width>191</width>
       <height>22</height>
      </rect>
     </property>
@@ -61,7 +61,7 @@
     </item>
     <item>
      <property name="text">
-      <string>Hierarchical Cooperative A*</string>
+      <string>Windowed Hierarchical Cooperative A*</string>
      </property>
     </item>
    </widget>
@@ -1108,14 +1108,14 @@
    <widget class="QLabel" name="totalTimeLabel">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>570</x>
       <y>740</y>
-      <width>101</width>
-      <height>21</height>
+      <width>121</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Total Time:</string>
+     <string>Time required per run:</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="totalTimeTextbox">
@@ -1137,14 +1137,14 @@
    <widget class="QLabel" name="totalPathLabel">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>570</x>
       <y>780</y>
-      <width>101</width>
+      <width>121</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>Total Path:</string>
+     <string>Average path per agent: </string>
     </property>
    </widget>
    <widget class="QLineEdit" name="totalPathTextbox">
