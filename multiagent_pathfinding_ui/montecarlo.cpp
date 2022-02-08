@@ -20,6 +20,7 @@ void MainWindow::monteCarloClicked()
 	this->failureCount = 0;
 	this->totalTimeWhca = 0;
 	this->timeWhca = 0;
+	this->pathCountWhca = 0;
 	montecarlo_list = generateRandomRobots(num_of_robots, num_of_steps, num_of_simulations);
 	montecarloStatus = true;
 }
@@ -181,9 +182,12 @@ void MainWindow::montecarloTimerEvent()
 			else
 			{
 				double time = double(totalTimeWhca) / double(numOfSims);
+				double pathPerSim = double(pathCountWhca) / double(numOfSims);
+				double pathPerRobot = pathPerSim / double(numOfRobots);
+				QString pathstr = QString::number(pathPerRobot);
 				QString timestr = QString::number(time);
 				setTimeTextbox(timestr);
-				setPathTextbox("0");
+				setPathTextbox(pathstr);
 				setFailureTextbox("0");
 			}
 			

@@ -218,6 +218,11 @@ void MainWindow::timerEvent()
 
             else if (selected_method == 2)
             {
+                if (robot_to_move->getTile() != robot_to_move->getNextStep())
+                {
+                    pathCountWhca++;
+                }
+
                 robot_to_move->takeStep();
                 updateRobotGraphics();
                 bool finish = checkForStatus();

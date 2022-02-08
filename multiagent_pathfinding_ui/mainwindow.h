@@ -117,6 +117,7 @@ private:
     double averagePath;
     int sumOfTimeOverSims;
     double sumOfAveragePath;
+    int pathCountWhca;
 
 public slots:
 
