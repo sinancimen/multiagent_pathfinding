@@ -12,42 +12,18 @@ MainWindow::MainWindow(QWidget *parent)
     scene = new QGraphicsScene(this);
     scene->setSceneRect(20,10, 980, 480);
     ui->graphicsView->setScene(scene);
-    brushes.push_back(QBrush(Qt::green));
-    brushes.push_back(QBrush(Qt::red));
-    brushes.push_back(QBrush(Qt::yellow));
-    brushes.push_back(QBrush(Qt::magenta));
-    brushes.push_back(QBrush(Qt::cyan));
-    brushes.push_back(QBrush(Qt::darkGreen));
-    brushes.push_back(QBrush(Qt::darkYellow));
 
-    brushes.push_back(QBrush(Qt::green));
-    brushes.push_back(QBrush(Qt::red));
-    brushes.push_back(QBrush(Qt::yellow));
-    brushes.push_back(QBrush(Qt::magenta));
-    brushes.push_back(QBrush(Qt::cyan));
-    brushes.push_back(QBrush(Qt::darkGreen));
-    brushes.push_back(QBrush(Qt::darkYellow));
-    brushes.push_back(QBrush(Qt::green));
-    brushes.push_back(QBrush(Qt::red));
-    brushes.push_back(QBrush(Qt::yellow));
-    brushes.push_back(QBrush(Qt::magenta));
-    brushes.push_back(QBrush(Qt::cyan));
-    brushes.push_back(QBrush(Qt::darkGreen));
-    brushes.push_back(QBrush(Qt::green));
-    brushes.push_back(QBrush(Qt::red));
-    brushes.push_back(QBrush(Qt::yellow));
-    brushes.push_back(QBrush(Qt::magenta));
-    brushes.push_back(QBrush(Qt::cyan));
-    brushes.push_back(QBrush(Qt::darkGreen));
-    brushes.push_back(QBrush(Qt::darkYellow));
-    brushes.push_back(QBrush(Qt::green));
-    brushes.push_back(QBrush(Qt::red));
-    brushes.push_back(QBrush(Qt::yellow));
-    brushes.push_back(QBrush(Qt::magenta));
-    brushes.push_back(QBrush(Qt::cyan));
-    brushes.push_back(QBrush(Qt::darkGreen));
-    brushes.push_back(QBrush(Qt::darkYellow));
-    brushes.push_back(QBrush(Qt::darkYellow));
+    for (int i = 0; i < 30 ; i++)
+    {
+        brushes.push_back(QBrush(Qt::green));
+        brushes.push_back(QBrush(Qt::red));
+        brushes.push_back(QBrush(Qt::yellow));
+        brushes.push_back(QBrush(Qt::magenta));
+        brushes.push_back(QBrush(Qt::cyan));
+        brushes.push_back(QBrush(Qt::darkGreen));
+        brushes.push_back(QBrush(Qt::darkYellow));
+    }
+   
 
     Map = new map(50, 25);
     timer1 = new QTimer(this);
@@ -209,6 +185,12 @@ void MainWindow::timerEvent()
         if (movingRobots.size() == 0)
         {
             startStatus = false;
+            if (montecarloStatus)
+            {
+                sumOfAveragePath += averagePath;
+                sumOfTimeOverSims += timeTaken;
+                sumOfPath = 0;
+            }
         }
     }
         
@@ -228,3 +210,14 @@ tile* MainWindow::findTileAtPosition(int x, int y)
     }
     return Tile;
 }
+
+void MainWindow::setTimeTextbox(QString text)
+{
+    ui->totalTimeTextbox->setText(text);
+}
+
+void MainWindow::setPathTextbox(QString text)
+{
+    ui->totalPathTextbox->setText(text);
+}
+

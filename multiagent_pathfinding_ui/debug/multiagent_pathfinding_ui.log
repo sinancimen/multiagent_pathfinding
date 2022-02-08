@@ -1,5 +1,4 @@
 ﻿  Reading Qt configuration (C:/Qt/5.12.12/msvc2017_64/bin/qmake)
-  Uic'ing mainwindow.ui...
   mainwindow.cpp
 C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\ngraph.hpp(372,1): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
 C:\Users\cimbo\OneDrive\Masaüstü\repos\multiagent_pathfinding\multiagent_pathfinding_ui\ngraph.hpp(356): message : while compiling class template member function 'bool NGraph::tGraph<tile *>::remove_edge(std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>,std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<tile *const ,std::pair<std::set<tile *,std::less<tile *>,std::allocator<tile *>>,std::set<tile *,std::less<tile *>,std::allocator<tile *>>>>>>>)'

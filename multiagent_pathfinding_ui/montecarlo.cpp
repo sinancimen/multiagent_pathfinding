@@ -8,8 +8,11 @@ void MainWindow::monteCarloClicked()
 	int num_of_steps = getNumberOfSteps().toInt();
 	int num_of_simulations = getNumberOfSimulations().toInt();
 	this->sumOfPath = 0;
-	this->sumOfTime = 0;
+	this->timeTaken = 0;
 	this->noOfFailures = 0;
+	this->averagePath = 0.0;
+	this->sumOfTimeOverSims = 0;
+	this->sumOfAveragePath = 0.0;
 	montecarlo_list = generateRandomRobots(num_of_robots, num_of_steps, num_of_simulations);
 	montecarloStatus = true;
 }
@@ -74,15 +77,17 @@ std::vector<QList<robot*>> MainWindow::generateRandomRobots(int num_robot, int n
 				{
 					while (!stepsReq)
 					{
+						x_goal = (rand() % (Map->getWidth()));
+						y_goal = (rand() % (Map->getHeight()));
 						if (abs(x - x_goal) + abs(y - y_goal) == num_steps)
 						{
 							stepsReq = true;
 						}
-						else
+						/*else
 						{
 							x_goal = (rand() % (Map->getWidth()));
 							y_goal = (rand() % (Map->getHeight()));
-						}
+						}*/
 					}
 				}
 			}
@@ -108,6 +113,7 @@ std::vector<QList<robot*>> MainWindow::generateRandomRobots(int num_robot, int n
 
 void MainWindow::montecarloTimerEvent()
 {
+
 	if (!startStatus && montecarloStatus)
 	{
 		if (montecarlo_list.size() > 0)
@@ -120,6 +126,13 @@ void MainWindow::montecarloTimerEvent()
 		else
 		{
 			montecarloStatus = false;
+			int numOfSims = getNumberOfSimulations().toInt();
+			double path = sumOfAveragePath / numOfSims;
+			QString pathstr = QString::number(path);
+			double time = sumOfTimeOverSims / numOfSims;
+			QString timestr = QString::number(time);
+			setTimeTextbox(timestr);
+			setPathTextbox(pathstr);
 		}
 	}
 }

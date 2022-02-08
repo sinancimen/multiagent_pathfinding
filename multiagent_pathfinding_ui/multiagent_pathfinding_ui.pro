@@ -19,6 +19,7 @@ SOURCES += \
     localRepairAStar.cpp \
     draw.cpp \
     helpers.cpp \
+    coopAStar.cpp \
 
 
 
@@ -32,6 +33,7 @@ HEADERS += \
     tile.h \
     set_ops.hpp \
     ngraph.hpp \
+    TimedNode.h \
 
 
 FORMS += \

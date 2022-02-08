@@ -1,11 +1,12 @@
 #include "mainwindow.h"
 #include "helpers.h"
 
-void MainWindow::coopAStar_Solver(robot* robot_considered)
+std::vector<int> MainWindow::coopAStar_Solver(robot* robot_considered)
 {
     
     map* MapClone = new map(Map);
     std::set<tile*> neighbour_tiles = MapClone->getGraph().out_neighbors(robot_considered->getTile());
+    std::vector<int> results;
     for (tile* Tile : neighbour_tiles)
     {
         for (int k = 0; k < robotList.size(); k++)
@@ -16,10 +17,11 @@ void MainWindow::coopAStar_Solver(robot* robot_considered)
             }
         }
     }
-    coopAStar_Search(robot_considered, MapClone);
+    results = coopAStar_Search(robot_considered, MapClone);
+    return results;
 }
 
-void MainWindow::coopAStar_Search(robot* Robot, map* MapClone)
+std::vector<int> MainWindow::coopAStar_Search(robot* Robot, map* MapClone)
 {
     std::priority_queue<TimedNode*, std::vector<TimedNode*>, CompareManhattanDistanceTimed> queue;
     Node* initialNode = new Node(Robot->getTile(), NULL, calculateHeuristic_Manhattan(Robot->getTile(), Robot->getGoal().at(0), Robot->getGoal().at(1)));
@@ -64,12 +66,25 @@ void MainWindow::coopAStar_Search(robot* Robot, map* MapClone)
     resultSequence.push_back(result->m_tile);
     reservationTable.push_back(result);
     TimedNode* parentNode = result->m_parent;
+    int moves = 0;
     while (parentNode != NULL)
     {
         resultSequence.insert(resultSequence.begin(), parentNode->m_tile);
         reservationTable.push_back(parentNode);
+        if (parentNode->m_parent != NULL)
+        {
+            if (parentNode->m_tile != parentNode->m_parent->m_tile)
+            {
+                moves += 1;
+            }
+        }
+       
         parentNode = parentNode->m_parent;
     }
     resultSequence.erase(resultSequence.begin());
     Robot->setPath(resultSequence);
+    std::vector<int> results;
+    results.push_back(result->time);
+    results.push_back(moves);
+    return results;
 }

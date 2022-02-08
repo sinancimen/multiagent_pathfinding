@@ -48,10 +48,12 @@ public:
     map* Map;
     void localRepairAStar_Solver(robot* robot_considered);
     void localRepairAStar_Search(robot* Robot, map* MapClone);
-    void coopAStar_Solver(robot* robot_considered);
-    void coopAStar_Search(robot* Robot, map* MapClone);
+    std::vector<int> coopAStar_Solver(robot* robot_considered);
+    std::vector<int> coopAStar_Search(robot* Robot, map* MapClone);
     tile* MainWindow::findTileAtPosition(int x, int y);
     std::vector<TimedNode*> reservationTable;
+    void setTimeTextbox(QString text);
+    void setPathTextbox(QString text);
 
 
 
@@ -93,11 +95,12 @@ private:
     QTimer* timer1;
     QTimer* timer2;
 
-    int sumOfTime;
+    int timeTaken;
     int noOfFailures;
     int sumOfPath;
-
-
+    double averagePath;
+    int sumOfTimeOverSims;
+    double sumOfAveragePath;
 
 public slots:
 
@@ -177,6 +180,7 @@ public slots:
 
     void startClicked()
     {
+        std::vector<int> results;
         if (selected_method == 0)
         {
             for (int i = 0; i < robotList.size(); i++)
@@ -190,9 +194,12 @@ public slots:
             reservationTable.clear();
             for (int i = 0; i < robotList.size(); i++)
             {
-                coopAStar_Solver(robotList.at(i));
+                results = coopAStar_Solver(robotList.at(i));
+                timeTaken = std::max(timeTaken, results.at(0));
+                sumOfPath += results.at(1);
             }
             startStatus = true;
+            averagePath = sumOfPath / robotList.size();
         }
     }
 
