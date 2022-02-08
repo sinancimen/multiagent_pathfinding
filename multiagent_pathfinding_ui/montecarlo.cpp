@@ -123,28 +123,29 @@ void MainWindow::montecarloTimerEvent()
 
 	if (!startStatus && montecarloStatus)
 	{
+		if (selected_method == 0)
+		{
+			if (failure)
+			{
+				failureCount++;
+				failure = false;
+			}
+			else
+			{
+				totalPathLRA += pathLRA;
+				totalTimeLRA += timeLRA;
+			}
+			timeLRA = 0;
+			pathLRA = 0;
+		}
+		else if (selected_method == 2)
+		{
+			totalTimeWhca += timeWhcaSim;
+			timeWhcaSim = 0;
+		}
 		if (montecarlo_list.size() > 0)
 		{
-			if (selected_method == 0)
-			{
-				if (failure)
-				{
-					failureCount++;
-					failure = false;
-				}
-				else
-				{
-					totalPathLRA += pathLRA;
-					totalTimeLRA += timeLRA;
-				}
-				timeLRA = 0;
-				pathLRA = 0;
-			}
-			else if (selected_method == 2)
-			{
-				totalTimeWhca += timeWhcaSim;
-				timeWhcaSim = 0;
-			}
+			
 			clearRobots();
 			robotList = montecarlo_list.at(0);
 			startClicked();
@@ -157,9 +158,9 @@ void MainWindow::montecarloTimerEvent()
 			int numOfRobots = getNumberOfRobots().toInt();
 			if (selected_method == 1)
 			{
-				double path = sumOfAveragePath / numOfSims + 1.0;
+				double path = sumOfAveragePath / double(numOfSims) + 1.0;
 				QString pathstr = QString::number(path);
-				double time = sumOfTimeOverSims / numOfSims;
+				double time = double(sumOfTimeOverSims) / double(numOfSims);
 				QString timestr = QString::number(time);
 				setTimeTextbox(timestr);
 				setPathTextbox(pathstr);
@@ -167,10 +168,10 @@ void MainWindow::montecarloTimerEvent()
 			}
 			else if (selected_method == 0)
 			{
-				double path_per_sim = totalPathLRA / (numOfSims - failureCount);
-				double path_per_robot = path_per_sim / numOfRobots;
+				double path_per_sim = double(totalPathLRA) / (double(numOfSims) - double(failureCount));
+				double path_per_robot = path_per_sim / double(numOfRobots);
 				QString pathstr = QString::number(path_per_robot);
-				double time = totalTimeLRA / numOfSims - 1.0;
+				double time = double(totalTimeLRA) / double(numOfSims) - 1.0;
 				QString timestr = QString::number(time);
 				QString failstr = QString::number(failureCount);
 				setTimeTextbox(timestr);
@@ -179,8 +180,8 @@ void MainWindow::montecarloTimerEvent()
 			}
 			else
 			{
-				double time = totalTimeWhca / numOfSims;
-				QString timestr = QString::number(time + 1);
+				double time = double(totalTimeWhca) / double(numOfSims);
+				QString timestr = QString::number(time);
 				setTimeTextbox(timestr);
 				setPathTextbox("0");
 				setFailureTextbox("0");
